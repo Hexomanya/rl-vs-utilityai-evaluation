@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1091838ee494d379b1af72861f5225a, type: 3}
+  m_Name: SimpleStupidRangedAttack
+  m_EditorClassIdentifier: 
+  Name: Simple Stupid Ranged Attack
+  Description: It is a really simple ranged attack
+  ActionPointCost: 2
+  RequiresPosition: 1
+  Range: 6
+  _damage: 2

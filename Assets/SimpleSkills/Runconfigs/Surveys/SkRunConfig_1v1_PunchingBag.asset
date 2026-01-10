@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
+  m_Name: SkRunConfig_1v1_PunchingBag
+  m_EditorClassIdentifier: 
+  GamesCount: 1
+  RandomizePlayerOrder: 0
+  RoundDelay: 1
+  MaxRounds: 10
+  IsTestRun: 1
+  MaxRetries: 0
+  RoundRewardMultiplier: 0.075
+  MinRewardPercentage: 0.4
+  GamePrefab: {fileID: 3884367716203140998, guid: dccb29dd42622ca4dbd80777685d7b95, type: 3}
+  TestMapIndex: 1
+  Factions:
+  - Name: Player
+    TeamSetup:
+    - {fileID: 6758861965081291365, guid: eaf05318a9a9d16408d6438613dd0afa, type: 3}
+  - Name: Enemy
+    TeamSetup:
+    - {fileID: 6758861965081291365, guid: 88209976539465f4a8dd399f130188cd, type: 3}
+  AgentNames:
+  - Isabel
+  - Thorsten
+  - Elara
+  - Gareth
+  - Lyanna
+  - Aldric
+  - Seraphina
+  - Kieran
+  - Morgana
+  - Cedric
+  - Aria
+  - Thane
+  - Vivienne
+  - Roderick
+  - Isadora
+  - Magnus
+  - Evangeline
+  - Tristan
+  - Cordelia
+  - Valerian

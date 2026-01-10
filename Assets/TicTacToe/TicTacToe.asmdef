@@ -1,0 +1,17 @@
+{
+  "name": "TicTacToe",
+  "rootNamespace": "",
+  "references": [
+    "GUID:85e0054f8e64b47309646d35f8851f81",
+    "GUID:8dc6bc0ab9d1e6148978e88a59e80ec8"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

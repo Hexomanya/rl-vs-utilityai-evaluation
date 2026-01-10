@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
+  m_Name: SkRunConfig_2v2_POD
+  m_EditorClassIdentifier: 
+  GamesCount: 1
+  RandomizePlayerOrder: 0
+  RoundDelay: 1
+  MaxRounds: 10
+  IsTestRun: 1
+  MaxRetries: 0
+  RoundRewardMultiplier: 0.075
+  MinRewardPercentage: 0.4
+  GamePrefab: {fileID: 2272188666503290101, guid: 8476e2be0185d3a49b7c54017cb998e7, type: 3}
+  TestMapIndex: 1
+  Factions:
+  - Name: Player
+    TeamSetup:
+    - {fileID: 6758861965081291365, guid: eaf05318a9a9d16408d6438613dd0afa, type: 3}
+    - {fileID: 6758861965081291365, guid: eaf05318a9a9d16408d6438613dd0afa, type: 3}
+  - Name: Enemy
+    TeamSetup:
+    - {fileID: 2772456978244489626, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+    - {fileID: 2772456978244489626, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+  AgentNames:
+  - Isabel
+  - Thorsten
+  - Elara
+  - Gareth
+  - Lyanna
+  - Aldric
+  - Seraphina
+  - Kieran
+  - Morgana
+  - Cedric
+  - Aria
+  - Thane
+  - Vivienne
+  - Roderick
+  - Isadora
+  - Magnus
+  - Evangeline
+  - Tristan
+  - Cordelia
+  - Valerian

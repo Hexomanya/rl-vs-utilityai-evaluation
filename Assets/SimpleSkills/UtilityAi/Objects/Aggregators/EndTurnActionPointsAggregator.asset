@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67062c8cbea646739e1e508d801f7784, type: 3}
+  m_Name: EndTurnActionPointsAggregator
+  m_EditorClassIdentifier: 
+  _function: 2
+  _leftInput: {fileID: 11400000, guid: 418f5bc10e3a35949aae8d4e5a96694c, type: 2}
+  _rightInput: {fileID: 11400000, guid: a62c260853ef4f14d86fc2a1d6771956, type: 2}

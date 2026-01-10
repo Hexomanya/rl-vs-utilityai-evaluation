@@ -1,0 +1,76 @@
+{
+  "count": 1,
+  "self": 198.5704576,
+  "total": 204.1385473,
+  "children": {
+    "InitializeActuators": {
+      "count": 606,
+      "self": 0.010968199999999999,
+      "total": 0.010968199999999999,
+      "children": null
+    },
+    "InitializeSensors": {
+      "count": 606,
+      "self": 0.0069828999999999994,
+      "total": 0.0069828999999999994,
+      "children": null
+    },
+    "AgentSendState": {
+      "count": 9362,
+      "self": 0.61746839999999992,
+      "total": 1.3041961,
+      "children": {
+        "CollectObservations": {
+          "count": 71961,
+          "self": 0.3465755,
+          "total": 0.3465755,
+          "children": null
+        },
+        "WriteActionMask": {
+          "count": 71961,
+          "self": 0.11221239999999999,
+          "total": 0.11221239999999999,
+          "children": null
+        },
+        "RequestDecision": {
+          "count": 71961,
+          "self": 0.2279398,
+          "total": 0.2279398,
+          "children": null
+        }
+      }
+    },
+    "DecideAction": {
+      "count": 9362,
+      "self": 2.4056748,
+      "total": 2.4056748999999997,
+      "children": null
+    },
+    "AgentAct": {
+      "count": 9362,
+      "self": 1.8392688,
+      "total": 1.8392688,
+      "children": null
+    }
+  },
+  "gauges": {
+    "Test Behavior.CumulativeReward": {
+      "count": 12716,
+      "max": 1,
+      "min": -1,
+      "runningAverage": 0.865443349,
+      "value": 1,
+      "weightedAverage": 0.9306253
+    }
+  },
+  "metadata": {
+    "timer_format_version": "0.1.0",
+    "start_time_seconds": "1746632585",
+    "unity_version": "6000.0.35f1",
+    "command_line_arguments": "E:\\Programme\\Unity\\Installs\\6000.0.35f1\\Editor\\Unity.exe -projectpath F:\\Dateien\\Unity\\GameMasterProject -useHub -hubIPC -cloudEnvironment production",
+    "communication_protocol_version": "1.5.0",
+    "com.unity.ml-agents_version": "3.0.0",
+    "scene_name": "TicTacToe",
+    "end_time_seconds": "1746632790"
+  }
+}

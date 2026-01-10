@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
+  m_Name: SkRunConfig_PlayerAVsPlayerA
+  m_EditorClassIdentifier: 
+  GamesCount: 1
+  RandomizePlayerOrder: 1
+  RoundDelay: 1
+  MaxRounds: 40
+  IsTestRun: 1
+  MaxRetries: 0
+  RoundRewardMultiplier: 0.075
+  MinRewardPercentage: 0.4
+  GamePrefab: {fileID: 1816393480055350439, guid: 4bd07939217b61142a6d4ea77658ef13, type: 3}
+  TestMapIndex: 2
+  Factions:
+  - Name: Evil
+    AgentPrefab: {fileID: 6758861965081291365, guid: 2e68e08d7ef3b3649b6d82ab7b680e6d, type: 3}
+  - Name: Good
+    AgentPrefab: {fileID: 6758861965081291365, guid: 2e68e08d7ef3b3649b6d82ab7b680e6d, type: 3}
+  AgentsPerFaction: 1
+  AgentNames:
+  - Isabel
+  - Thorsten
+  - Elara
+  - Gareth
+  - Lyanna
+  - Aldric
+  - Seraphina
+  - Kieran
+  - Morgana
+  - Cedric
+  - Aria
+  - Thane
+  - Vivienne
+  - Roderick
+  - Isadora
+  - Magnus
+  - Evangeline
+  - Tristan
+  - Cordelia
+  - Valerian
