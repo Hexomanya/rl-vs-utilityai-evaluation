@@ -295,7 +295,7 @@ namespace SimpleSkills
             }
             
             this.Health.Set(Mathf.Max(0, this.Health.Value - damage));
-            Debug.Log($"{this.GetName()} received {damage} damage from {damageOrigin.GetName()}.");
+            if(_manager.RunConfig.IsTestRun) Debug.Log($"{this.GetName()} received {damage} damage from {damageOrigin.GetName()}.");
             _rewardProvider.OnDidReceiveDamage(damageOrigin, damage);
 
             bool willDie = this.Health.Value <= 0;

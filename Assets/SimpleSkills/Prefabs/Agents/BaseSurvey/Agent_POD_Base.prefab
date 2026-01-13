@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2260733398913359656}
   - component: {fileID: 6329051266263077913}
   m_Layer: 0
-  m_Name: Agent_01_POS
+  m_Name: Agent_POD_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,15 +64,15 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 03000000b9010000
-    VectorActionSize: 03000000b9010000
+      BranchSizes: 030000001500000015000000
+    VectorActionSize: 030000001500000015000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 00722f20b5149b8458dd8ec6b47f5e39, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: PO_01
+  m_BehaviorType: 2
+  m_BehaviorName: POD_01
   TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a004641ddc20924880294cee1dbb80e, type: 2}
   - {fileID: 11400000, guid: b283e43d3c110cc4ca093003a9851061, type: 2}
   _usesPositionSelection: 1
-  _useTwoPositionBranches: 0
-  _usesRewardShaping: 0
+  _useTwoPositionBranches: 1
+  _usesRewardShaping: 1
   _currentAgentChangedEvent: {fileID: 11400000, guid: cb93084fe1ecbb54fb3cd74028e786a9, type: 2}
   _lastUsedSkillChangedEvent: {fileID: 11400000, guid: 07ce8fbe377768c4fa2ebbf1bea4401d, type: 2}

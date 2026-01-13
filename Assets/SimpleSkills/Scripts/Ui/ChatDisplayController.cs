@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using _General;
 using JetBrains.Annotations;
 using KBCore.Refs;
 using TMPro;
@@ -34,6 +35,8 @@ namespace SimpleSkills.Scripts.Ui
 
         private void OnLogMessage(string message, ISkAgent caller)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
+            
             ChatMessage chatMessage = new ChatMessage{
                 Message = message,
                 Caller = caller,

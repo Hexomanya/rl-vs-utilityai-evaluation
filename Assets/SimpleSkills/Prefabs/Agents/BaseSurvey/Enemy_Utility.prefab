@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4041342633464923699}
   - component: {fileID: 6950307828093146470}
   m_Layer: 0
-  m_Name: UtilityAgent
+  m_Name: Enemy_Utility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

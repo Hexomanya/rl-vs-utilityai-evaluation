@@ -1,4 +1,5 @@
 using System;
+using _General;
 using KBCore.Refs;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ namespace SimpleSkills.Scripts.Ui
         
         private void OnPositionClicked(Vector3 worldPosition)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
             Vector2Int boardPosition = _boardManager.WorldToBoardPosition(worldPosition);
             SkTileManager clickedTile = _boardManager.GetTileAt(boardPosition);
     
@@ -51,6 +53,8 @@ namespace SimpleSkills.Scripts.Ui
 
         private void OnCurrentAgentChanged(ISkAgent agent)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
+            
             Debug.Log($"CurrentAgent changed to {agent.Position}");
             _currentAgent = agent;
             SkTileManager currentTile = _boardManager.GetTileAt(agent.Position);
@@ -78,6 +82,8 @@ namespace SimpleSkills.Scripts.Ui
         
         private void OnLastUsedSkillChanged(SimpleSkill lastUsedSkill)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
+            
             if(_currentAgent is null)
             {
                 Debug.LogWarning("Current agent is null!");
@@ -90,6 +96,8 @@ namespace SimpleSkills.Scripts.Ui
 
         private void OnAgentTookAction(ISkAgent activeAgent)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
+            
             //THIS IS VERY MUCH NOT OPTIMAL!
             foreach (SkTileManager tile in _boardManager.Tiles)
             {

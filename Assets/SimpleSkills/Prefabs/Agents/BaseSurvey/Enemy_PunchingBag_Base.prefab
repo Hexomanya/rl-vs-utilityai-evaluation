@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313719351086657762}
-  - component: {fileID: 5743636228256311206}
+  - component: {fileID: 5373911478126916794}
   m_Layer: 0
-  m_Name: PlayerAAgent
+  m_Name: Enemy_PunchingBag_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5743636228256311206
+--- !u!114 &5373911478126916794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6758861965081291365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb95165509824ffc820c48915a2865b1, type: 3}
+  m_Script: {fileID: 11500000, guid: df171609a5374b8aa1c275c523662fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileClickedWorldPositionEvent: {fileID: 11400000, guid: de3e4860585f99f42a26e0515574dcad, type: 2}
-  _skillActionPerformed: {fileID: 11400000, guid: 5e99fac7d72067e468e329cbf35fc769, type: 2}
-  _currentAgentChangedEvent: {fileID: 11400000, guid: cb93084fe1ecbb54fb3cd74028e786a9, type: 2}
-  _lastUsedSkillChangedEvent: {fileID: 11400000, guid: 07ce8fbe377768c4fa2ebbf1bea4401d, type: 2}
   _maxHealth: 10
   _skills:
   - {fileID: 11400000, guid: e90c589c4ce78f74b861046d69e48d8a, type: 2}
-  - {fileID: 11400000, guid: 1618f1eccc94a4541b85292db148b8a5, type: 2}
-  - {fileID: 11400000, guid: 295bff3c71f7b40429cba0e7f930daf2, type: 2}
-  - {fileID: 11400000, guid: b283e43d3c110cc4ca093003a9851061, type: 2}
-  - {fileID: 11400000, guid: 24354c2d0b5b8a9449f508b6847838de, type: 2}
+  - {fileID: 11400000, guid: 31baa1836a4bab440b0c7209e615b735, type: 2}
+  _currentAgentChangedEvent: {fileID: 11400000, guid: cb93084fe1ecbb54fb3cd74028e786a9, type: 2}
+  _lastUsedSkillChangedEvent: {fileID: 11400000, guid: 07ce8fbe377768c4fa2ebbf1bea4401d, type: 2}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 313719351086657762}
   - component: {fileID: 5373911478126916794}
   m_Layer: 0
-  m_Name: RandomAgent
+  m_Name: Enemy_Random_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

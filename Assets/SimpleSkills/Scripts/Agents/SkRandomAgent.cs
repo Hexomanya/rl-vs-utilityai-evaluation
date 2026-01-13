@@ -121,7 +121,7 @@ namespace SimpleSkills
         {
             _manager.RemoveFromGame(this);
             this.GameplayManager.ScoreKeeper.AddScore(ScoreType.Death, this.FactionIndex);
-            Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
+            if(_manager.RunConfig.IsTestRun) Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
             GameLog.Print($"Was killed by {killOriginAgent.GetName()}.", this);
         }
 

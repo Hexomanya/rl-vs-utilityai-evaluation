@@ -1,4 +1,5 @@
 using System;
+using _General;
 using KBCore.Refs;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,8 @@ namespace SimpleSkills.Scripts.Ui
 
         private void OnPlayerChange(ISkAgent currentAgent)
         {
+            if(StateManager.IsUiUpdateDisabled) return;
+            
             if(currentAgent is not null)
             {
                 this.UpdateDisplays(currentAgent);

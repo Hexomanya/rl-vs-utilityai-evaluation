@@ -11,6 +11,8 @@ namespace _General
 
     public class StateManager : ValidatedMonoBehaviour
     {
+        public static bool IsUiUpdateDisabled = false;
+        
         [Header("Survey Mode")]
         [SerializeField] private bool _useSurveyMode;
         [SerializeField] private SurveyConfig _surveyConfig;
@@ -65,6 +67,7 @@ namespace _General
             }
             else
             {
+                StateManager.IsUiUpdateDisabled = true;
                 this.StartDevMode();
             }
         }
