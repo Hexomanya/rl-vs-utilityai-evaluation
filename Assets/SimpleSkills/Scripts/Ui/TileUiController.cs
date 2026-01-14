@@ -1,4 +1,5 @@
 using System;
+using _General;
 using KBCore.Refs;
 using TMPro;
 using UnityEngine;
@@ -16,14 +17,16 @@ namespace SimpleSkills.Scripts.Ui
         [SerializeField] private Sprite _defaultSprite;
         [SerializeField] private Sprite _playerSprite;
         [SerializeField] private Sprite _elementSprite;
-        
+
         [Header("Tile Displays")]
+        [SerializeField] private GameObject _tileDisplayRoot;
         [SerializeField] private Image _tileBackground;
         [SerializeField] private Image _figureDisplay;
         [SerializeField] private TextMeshProUGUI _positionText;
         [SerializeField] private Image _highlightBackground;
-        
+
         [Header("Moveable Displays")]
+        [SerializeField] private GameObject _statusDisplayRoot;
         [SerializeField] private HealthbarController _healthbarController;
         [SerializeField] private SkillDisplayController _skillDisplayController;
         
@@ -44,6 +47,13 @@ namespace SimpleSkills.Scripts.Ui
 
         public void UpdateVisuals()
         {
+            if(StateManager.IsUiUpdateDisabled)
+            {
+                _statusDisplayRoot.SetActive(false);
+                _tileDisplayRoot.SetActive(false);
+                return;
+            }
+            
             if(_figureDisplay is null) return;
             if(_tileBackground?.sprite is null) return;
             

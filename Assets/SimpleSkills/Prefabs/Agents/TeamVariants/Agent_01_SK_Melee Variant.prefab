@@ -49,8 +49,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2260733398913359656, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260733398913359656, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
       propertyPath: m_BehaviorName
       value: SK_01_Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260733398913359656, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2260733398913359656, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
       propertyPath: 'm_BrainParameters.VectorActionSize.Array.data[0]'

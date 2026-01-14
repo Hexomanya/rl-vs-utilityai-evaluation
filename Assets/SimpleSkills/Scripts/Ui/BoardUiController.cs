@@ -7,6 +7,7 @@ namespace SimpleSkills.Scripts.Ui
 {
     public class BoardUiController : ValidatedMonoBehaviour
     {
+        
         [Header("Object Connections")]
         [SerializeField, Self] private SkBoardManager _boardManager;
 

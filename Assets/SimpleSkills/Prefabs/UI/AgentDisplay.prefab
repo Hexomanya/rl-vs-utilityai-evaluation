@@ -295,10 +295,12 @@ MonoBehaviour:
   _defaultSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   _playerSprite: {fileID: 21300000, guid: 564805cee2737f044b3311ced257335a, type: 3}
   _elementSprite: {fileID: 21300000, guid: f57616489baedce4eb1cce331d274798, type: 3}
+  _tileDisplayRoot: {fileID: 5953857502699082663}
   _tileBackground: {fileID: 4045783140927110302}
   _figureDisplay: {fileID: 6549904144225125521}
   _positionText: {fileID: 8849641649880862850}
   _highlightBackground: {fileID: 4269202949096251296}
+  _statusDisplayRoot: {fileID: 3306620890184456828}
   _healthbarController: {fileID: 7621110172029489967}
   _skillDisplayController: {fileID: 2077342190852646903}
   _defaultColor: {r: 1, g: 1, b: 1, a: 1}

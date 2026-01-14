@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _General.Events;
 using _General.Ui;
 using KBCore.Refs;
+using Unity.MLAgents;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -33,6 +34,8 @@ namespace _General
         
         private void OnEnable()
         {
+            Academy.Instance.AutomaticSteppingEnabled = true;
+            
             if(!_useSurveyMode) return;
             _commandEvent.Subscribe(this.OnSurveyCommand);
         }

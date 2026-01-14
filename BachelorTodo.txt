@@ -1,6 +1,8 @@
 - POS trainieren
-- Trainieren von 2vs2 bzw. melee, bow 
+- Survey nur 1vs1
 
+- Fix Path was smaller then two
+- Fix would have masked everything!
 - Survey testen und wenn benötigt nach trainieren.
 - Survey durchführen
 - Arbeit schreiben 
