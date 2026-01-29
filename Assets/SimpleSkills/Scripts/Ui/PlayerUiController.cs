@@ -66,7 +66,7 @@ namespace SimpleSkills.Scripts.Ui
                 }
                 
                 string colorCode = agent.ActionPoints < skill.ActionPointCost ? "606060" : "02f750";
-                skillText += $"<color=#{colorCode}>{i}: {skill.Name}</color>\n";
+                skillText += $"<color=#{colorCode}>{i}: {skill.Name} ({skill.ActionPointCost} AP)</color>\n";
             }
 
             _skillDisplay.text = skillText;

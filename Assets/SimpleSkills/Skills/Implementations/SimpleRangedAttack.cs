@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using SimpleSkills.Scripts;
 using UnityEngine;
 
 
@@ -13,6 +14,7 @@ namespace SimpleSkills.Implementations
         
         public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
         {
+            //TODO: Only allow attack on selcted position
             Vector2Int originPos = context.OriginAgent.Position;
             Vector2Int? targetPos = context.TargetPosition;
             SkBoardManager boardManager = context.OriginAgent.GameplayManager.BoardManager;
@@ -22,35 +24,53 @@ namespace SimpleSkills.Implementations
                 Debug.LogError("TargetPosition can not be null!");
                 return Task.FromResult(false);
             }
-            
-            ISkAgent targetAgent = boardManager.GetAgentOnTileOrInRange(targetPos.Value, originPos, this.Range);
-            if(targetAgent is null) return Task.FromResult(false);
+
+            if(targetPos == originPos)
+            {
+                GameLog.Print("Can not target self!");
+                return Task.FromResult(false);
+            }
+
+            SkTileManager tile = boardManager.GetTileAt(targetPos.Value);
+
+            if(tile is null)
+            {
+                Debug.LogError("Skill was not provided a valid target position!");
+                return Task.FromResult(false);
+            }
+
+            if(tile.ContainedEntity is not ISkAgent targetAgent)
+            {
+                GameLog.Print("Selected tile does not contain a target!");
+                return Task.FromResult(false);
+            }
             
             bool hasLineOfSight = boardManager.HasLineOfSight(originPos, targetPos.Value);
-            if(!hasLineOfSight) return Task.FromResult(false);
+
+            if(!hasLineOfSight)
+            {
+                GameLog.Print("You don't have line of sight!");
+                return Task.FromResult(false);
+            }
+
+            context.TargetAgents = new[] { targetAgent };
+            context.IsValidated = true;
             
             return Task.FromResult(true);
         }
 
         public override Task<bool> ExecuteSkill(SkillContext context, CancellationToken cancelToken)
         {
-            Vector2Int originPos = context.OriginAgent.Position;
-            Vector2Int? targetPos = context.TargetPosition;
-            SkBoardManager boardManager = context.OriginAgent.GameplayManager.BoardManager;
-            
-            if(targetPos is null)
+            if(!context.IsValidated)
             {
-                Debug.LogError("TargetPosition can not be null!");
-                return Task.FromResult(false);
+                Debug.LogWarning("Skills should be validated before executing them!");
+                bool didValidate = this.CanExecute(context, cancelToken).Result;
+                if(!didValidate) return Task.FromResult(false);
             }
             
-            ISkAgent targetAgent = boardManager.GetAgentOnTileOrInRange(targetPos.Value, originPos, this.Range);
-            if(targetAgent is null) return Task.FromResult(false);
+            if(context.TargetAgents.Count <= 0) Debug.LogError("TargetAgents should not be empty after being validated!");
             
-            bool hasLineOfSight = boardManager.HasLineOfSight(originPos, targetPos.Value);
-            if(!hasLineOfSight) return Task.FromResult(false); //TODO: Is Shooting a wall a legitimate use of the action?
-            
-            context.OriginAgent.DealDamage(targetAgent, _damage);
+            context.OriginAgent.DealDamage(context.TargetAgents[0], _damage);
             return Task.FromResult(true);
         }
     }

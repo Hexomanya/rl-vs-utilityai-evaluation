@@ -56,7 +56,7 @@ namespace SimpleSkills.Scripts.Ui
         {
             if(StateManager.IsUiUpdateDisabled) return;
             
-            Debug.Log($"CurrentAgent changed to {agent.Position}");
+            //Debug.Log($"CurrentAgent changed to {agent.Position}");
             _currentAgent = agent;
             SkTileManager currentTile = _boardManager.GetTileAt(agent.Position);
     

@@ -51,6 +51,12 @@ namespace SimpleSkills
             _cancelTokenSource = new CancellationTokenSource();
         }
 
+        private void OnDisable()
+        {
+            _tileClickedWorldPositionEvent.Unsubscribe(this.OnWorldPositionSelected);
+            _skillActionPerformed.Unsubscribe(this.OnSkillActionPerformed);
+        }
+
         private void OnDestroy()
         {
             _cancelTokenSource.Cancel();
@@ -177,7 +183,7 @@ namespace SimpleSkills
             
             if(skill.ActionPointCost > this.ActionPoints) 
             {
-                Debug.Log("Not enough ActionPoints");
+                GameLog.Print("You do not have enough Action Points!");
                 return;
             }
 

@@ -13,7 +13,8 @@ namespace SimpleSkills.Scripts.Ui
         
         public override void SetHidden(bool isHidden)
         {
-            _rootObject.SetActive(!isHidden);   
+            //_rootObject.SetActive(!isHidden);   
+            _rootObject.SetActive(false); 
         }
 
         public void UpdateSkill(SimpleSkill lastUsedSkill)

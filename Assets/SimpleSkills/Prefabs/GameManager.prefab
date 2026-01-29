@@ -47,3 +47,4 @@ MonoBehaviour:
   _boardManager: {fileID: 0}
   _currentAgentChangedEvent: {fileID: 11400000, guid: cb93084fe1ecbb54fb3cd74028e786a9, type: 2}
   _agentTookActionEvent: {fileID: 11400000, guid: 5ba1e299f90558448bbb13cc5be0a67d, type: 2}
+  _gameResultEvent: {fileID: 11400000, guid: 5a5595a011b4a154784d69d76d57e809, type: 2}

@@ -20,7 +20,7 @@ MonoBehaviour:
   MaxRetries: 0
   RoundRewardMultiplier: 0.075
   MinRewardPercentage: 0.4
-  GamePrefab: {fileID: 2772456978244489626, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
+  GamePrefab: {fileID: 3744099082652025799, guid: 155bf609bf831c14595024bde75e6a7d, type: 3}
   TestMapIndex: 1
   Factions:
   - Name: Player

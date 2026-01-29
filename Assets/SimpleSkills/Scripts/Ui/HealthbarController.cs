@@ -24,9 +24,10 @@ namespace SimpleSkills.Scripts.Ui
             float percentage = health.Value / (float)health.MaxValue;
             float newWidth = _startWidth * percentage;
             
-            Debug.Log($"Updating healthbar. Startwidth: {_startWidth} Percantage: {percentage}; width: {newWidth}");
+            //Debug.Log($"Updating healthbar. Startwidth: {_startWidth} Percantage: {percentage}; width: {newWidth}");
             
             _healthBarRect.sizeDelta = new Vector2(newWidth, _healthBarRect.sizeDelta.y);
+            _healthTextDisplay.text = $"{health.Value}/{health.MaxValue}";
         }
 
         public override void SetHidden(bool isHidden)

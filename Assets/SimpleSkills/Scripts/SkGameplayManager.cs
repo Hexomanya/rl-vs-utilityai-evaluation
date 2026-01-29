@@ -20,8 +20,10 @@ namespace SimpleSkills
     public class SkGameplayManager : MonoBehaviour, IGameplayManager
     {
         [SerializeField, Anywhere] private SkBoardManager _boardManager;
+        [Header("Events")]
         [SerializeField] private SkAgentEvent _currentAgentChangedEvent;
         [SerializeField] private SkAgentEvent _agentTookActionEvent;
+        [SerializeField] private GameResultEvent _gameResultEvent;
         
         private WorldState _worldState;
         private readonly SkillUseCounter _skillUseCounter = new SkillUseCounter();
@@ -107,8 +109,14 @@ namespace SimpleSkills
             int winnerFactionIndex = this.CheckWinner();
             if(winnerFactionIndex == -1) return false;
             
-            this.EndGame(winnerFactionIndex, false);
+            this.StartCoroutine(this.WaitThenExecute(1f, () => this.EndGame(winnerFactionIndex, false)));
             return true;
+        }
+        
+        private IEnumerator WaitThenExecute(float delay, Action action)
+        {
+            yield return new WaitForSeconds(delay);
+            action?.Invoke();
         }
         
         private void EndGame(int winnerFactionIndex, bool wasForced)
@@ -124,8 +132,7 @@ namespace SimpleSkills
                     agent.OnGameEnd(WinLooseSignal.Draw);   
                 }
             }
-
-           
+            
             for (int i = 0; i < _runConfig.Factions.Count(); i++)
             {
                 ScoreType scoreType = winnerFactionIndex <= -1 ? ScoreType.Draw : (winnerFactionIndex == i ? ScoreType.Win : ScoreType.Lose);
@@ -136,6 +143,15 @@ namespace SimpleSkills
 
             _state = GameplayState.WinEndState;
             _skillUseCounter.ReportAndClear();
+            
+            // Survey player should always be 0
+            GameResult result = winnerFactionIndex switch
+            {
+                < 0 => GameResult.Draw,
+                0 => GameResult.Win,
+                _ => GameResult.Loose,
+            };
+            _gameResultEvent.Raise(result);
 
             OnGameEnded?.Invoke("SK");
         }

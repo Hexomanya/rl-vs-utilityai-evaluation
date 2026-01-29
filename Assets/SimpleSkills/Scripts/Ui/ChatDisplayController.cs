@@ -41,9 +41,14 @@ namespace SimpleSkills.Scripts.Ui
                 Message = message,
                 Caller = caller,
             };
+
+            if(_textMessages.Count >= _maxMessages)
+            {
+                this.RestrictMessageBuffer();
+            }
             
             _textMessages.Add(chatMessage);
-            this.RestrictMessageBuffer();
+            Debug.Log($"There are now {_textMessages.Count} in the log.");
 
             this.UpdateChatDisplay();
         }

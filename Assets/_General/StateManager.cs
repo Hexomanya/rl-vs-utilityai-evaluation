@@ -165,6 +165,8 @@ namespace _General
             {
                 _currentSurveyIndex++;
             }
+
+            _currentSurveyIndex = Mathf.Clamp(_currentSurveyIndex, 0, _surveyConfig.ConfigEntries.Count - 1);
             
             _nextSurveyConfigEvent.Raise(_surveyConfig.ConfigEntries[_currentSurveyIndex]);
         }
