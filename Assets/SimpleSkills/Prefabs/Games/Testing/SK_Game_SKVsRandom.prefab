@@ -154,6 +154,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1998058466318794629, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998058466318794629, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2494013927879602487, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
       propertyPath: m_Name
       value: Agent_SK_Base Variant

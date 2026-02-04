@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileManager: {fileID: 4490892512203164584}
+  _canvas: {fileID: 6305630686819564452}
   _defaultSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   _playerSprite: {fileID: 21300000, guid: 564805cee2737f044b3311ced257335a, type: 3}
   _elementSprite: {fileID: 21300000, guid: f57616489baedce4eb1cce331d274798, type: 3}

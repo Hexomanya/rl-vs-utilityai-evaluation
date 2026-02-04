@@ -10,6 +10,7 @@ using _General.TypeExtensions;
 using KBCore.Refs;
 using SimpleSkills.Configs;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -23,6 +24,8 @@ namespace SimpleSkills
         [SerializeField, Self] private BoardPathfindingSystem _pathfindingSystem;
         [SerializeField] private int _pathfindingPollingIntervalMs = 20;
         [SerializeField] private int _pathfindingTimeoutTime = 200;
+
+        public string OwnerID = "";
 
         private readonly List<SkTileManager> _tiles = new List<SkTileManager>();
         private TestMap _testMap;
@@ -42,8 +45,9 @@ namespace SimpleSkills
             }
         }
 
-        public void Initialize(int testMapIndex)
+        public void Initialize(int testMapIndex, string owningID)
         {
+            this.OwnerID = owningID;
             if(_tiles.Count > 0)
             {
                 Debug.LogWarning("The Board was already initialized! Use Reset instead!");
@@ -51,7 +55,7 @@ namespace SimpleSkills
                 return;
             }
 
-            Debug.Log("Initializing Map");
+            Debug.Log($"Initializing Game Board from owner {OwnerID}");
             
             this.InitializeTestMap(testMapIndex);
             
@@ -79,6 +83,7 @@ namespace SimpleSkills
             }
             
             this.NewGame();
+            Debug.Log($"Game Board Initialized with {_tiles.Count} tiles.");
         }
 
         private void InitializeTestMap(int testMapIndex)
@@ -113,7 +118,7 @@ namespace SimpleSkills
 
             if(index >= _tiles.Count)
             {
-                Debug.LogError($"Calculated index {index} is out of range for tiles array (count: {_tiles.Count})!");
+                Debug.LogError($"Calculated index {index} is out of range for tiles array (count: {_tiles.Count})! Owner is: {this.OwnerID}");
                 return null;
             }
 

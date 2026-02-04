@@ -13,6 +13,7 @@ namespace _General
     public class StateManager : ValidatedMonoBehaviour
     {
         public static bool IsUiUpdateDisabled = false;
+        public static bool IsInSurveyMode = false;
         
         [Header("Survey Mode")]
         [SerializeField] private bool _useSurveyMode;
@@ -26,15 +27,20 @@ namespace _General
         
         [Header("Dev Mode")]
         [SerializeField] private RunConfig _runConfig;
+        [SerializeField] private bool _showGameBoard = true;
+        [SerializeField] private int _maxGamePlayed = -1;
 
         private readonly ScoreKeeper _scoreKeeper = new ScoreKeeper();
         private readonly List<IGameplayManager> _gameplayManagers = new List<IGameplayManager>();
 
+        private int _playerGameCount;
         private int _currentSurveyIndex;
         
         private void OnEnable()
         {
             Academy.Instance.AutomaticSteppingEnabled = true;
+
+            StateManager.IsInSurveyMode = _useSurveyMode;
             
             if(!_useSurveyMode) return;
             _commandEvent.Subscribe(this.OnSurveyCommand);
@@ -70,7 +76,7 @@ namespace _General
             }
             else
             {
-                StateManager.IsUiUpdateDisabled = true;
+                StateManager.IsUiUpdateDisabled = !_showGameBoard;
                 this.StartDevMode();
             }
         }
@@ -158,6 +164,12 @@ namespace _General
 
         private void GameplayManagerOnOnGameEnded(string debugString)
         {
+            if(!_useSurveyMode)
+            {
+                this.HandleMaxGames();
+                return;
+            }
+            
             SurveyConfigEntry currentEntry = _surveyConfig.ConfigEntries[_currentSurveyIndex];
             currentEntry.PlayCount++;
 
@@ -171,9 +183,19 @@ namespace _General
             _nextSurveyConfigEvent.Raise(_surveyConfig.ConfigEntries[_currentSurveyIndex]);
         }
 
+        private void HandleMaxGames()
+        {
+            _playerGameCount++;
+
+            if(_maxGamePlayed < 0 || _playerGameCount < _maxGamePlayed) return;
+            
+            this.DestroyCurrentDevGames();
+            Application.Quit();
+        }
+
         private void StartDevMode()
         {
-            _gameplayManagers.Clear();
+            this.DestroyCurrentDevGames();
 
             int width = (int)Mathf.Sqrt(_runConfig.GamesCount);
 
@@ -194,6 +216,7 @@ namespace _General
                 Vector3 position = new Vector3(gridPos.x * offset.x, 0, gridPos.y * offset.y);
                 newRunObject.transform.position = position;
                 
+                manager.OnGameEnded += this.GameplayManagerOnOnGameEnded;
                 _gameplayManagers.Add(manager);
             }
 
@@ -204,6 +227,17 @@ namespace _General
             {
                 gameplayManager.OnStart(_scoreKeeper, _runConfig);
             }
+        }
+
+        private void DestroyCurrentDevGames()
+        {
+            foreach (IGameplayManager clearedManager in _gameplayManagers)
+            {
+                clearedManager.OnGameEnded -= this.GameplayManagerOnOnGameEnded;
+                if(clearedManager is MonoBehaviour clearedObject) Object.DestroyImmediate(clearedObject.transform.parent.gameObject);
+            }
+
+            _gameplayManagers.Clear();
         }
     }
 }

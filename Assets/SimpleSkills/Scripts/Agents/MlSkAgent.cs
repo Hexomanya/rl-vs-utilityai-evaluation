@@ -513,6 +513,7 @@ namespace SimpleSkills
         
         private void OnDisplayValueChange()
         {
+            //Debug.Log($"Changed something on Agent from: {GameplayManager.GameManagerID}");
             _currentAgentChangedEvent?.Raise(this);
         }
     }

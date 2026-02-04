@@ -12,6 +12,9 @@ namespace SimpleSkills.Scripts.Ui
     public class TileUiController : ValidatedMonoBehaviour
     {
         [SerializeField, Self] private SkTileManager _tileManager;
+
+        [Header("Canvas")]
+        [SerializeField, Child] private Canvas _canvas;
         
         [Header("Sprites")]
         [SerializeField] private Sprite _defaultSprite;
@@ -35,6 +38,7 @@ namespace SimpleSkills.Scripts.Ui
         [SerializeField] private Color _activeHighlightColor = Color.yellow;
         [SerializeField] private Color _selectedColor = Color.blue;
 
+        private bool _isCanvasDestroyed;
         private bool _isSelected;
         private bool _isCurrent;
 
@@ -42,11 +46,17 @@ namespace SimpleSkills.Scripts.Ui
 
         private void Start()
         {
+            if(!StateManager.IsInSurveyMode || StateManager.IsUiUpdateDisabled)
+            {
+                GameObject.DestroyImmediate(_canvas.gameObject);
+                _isCanvasDestroyed = true;
+            }
             this.UpdateVisuals();
         }
 
         public void UpdateVisuals()
         {
+            if(_isCanvasDestroyed) return;
             if(StateManager.IsUiUpdateDisabled)
             {
                 _statusDisplayRoot.SetActive(false);
@@ -112,6 +122,7 @@ namespace SimpleSkills.Scripts.Ui
 
         public void UpdateHealthbar()
         {
+            if(_isCanvasDestroyed) return;
             if(_tileManager.ContainedEntity is not ISkAgent agent) return;
             _healthbarController.OnHealthChange(agent.Health);
         }

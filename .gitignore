@@ -82,3 +82,5 @@ crashlytics-build.properties
 
 /results/*
 /python-envs/*
+
+/ProfilerCaptures/*

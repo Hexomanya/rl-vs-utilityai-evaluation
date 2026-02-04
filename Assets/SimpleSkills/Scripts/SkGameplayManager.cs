@@ -12,6 +12,7 @@ using SimpleSkills.Configs;
 using SimpleSkills.Scripts;
 using SimpleSkills.Scripts.RewardProvider;
 using SimpleSkills.UtilityAi;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,6 +41,8 @@ namespace SimpleSkills
 
         public event Action<string> OnGameEnded;
 
+        public string GameManagerID = "";
+
         public SkBoardManager BoardManager { get => _boardManager; }
         public int CurrentRound { get => _currentRound; }
         public RunConfig RunConfig { get => _runConfig; }
@@ -58,6 +61,9 @@ namespace SimpleSkills
 
         public void OnStart(ScoreKeeper scoreKeeper, RunConfig config)
         {
+            this.GameManagerID = GUID.Generate().ToString();
+            
+            Debug.Log("On Start called");
             _runConfig = config;
             _worldState = new WorldState();
             this.ScoreKeeper = scoreKeeper;
@@ -108,8 +114,10 @@ namespace SimpleSkills
             
             int winnerFactionIndex = this.CheckWinner();
             if(winnerFactionIndex == -1) return false;
+
+            if(StateManager.IsInSurveyMode) this.StartCoroutine(this.WaitThenExecute(1f, () => this.EndGame(winnerFactionIndex, false)));
+            else this.EndGame(winnerFactionIndex, false);
             
-            this.StartCoroutine(this.WaitThenExecute(1f, () => this.EndGame(winnerFactionIndex, false)));
             return true;
         }
         
@@ -239,8 +247,8 @@ namespace SimpleSkills
         
         private void Setup()
         {
-            Debug.Log("Setting Up");
-            _boardManager.Initialize(_runConfig.TestMapIndex);
+            Debug.Log($"Setting Up (Id: {this.GameManagerID})");
+            _boardManager.Initialize(_runConfig.TestMapIndex, this.GameManagerID);
             this.CreateAgents();
             this.MoveTeamsToStartPos();
         }

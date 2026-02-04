@@ -55,6 +55,7 @@ namespace SimpleSkills.Scripts.Ui
         private void OnCurrentAgentChanged(ISkAgent agent)
         {
             if(StateManager.IsUiUpdateDisabled) return;
+            if(!StateManager.IsInSurveyMode) return;
             
             //Debug.Log($"CurrentAgent changed to {agent.Position}");
             _currentAgent = agent;
@@ -84,6 +85,7 @@ namespace SimpleSkills.Scripts.Ui
         private void OnLastUsedSkillChanged(SimpleSkill lastUsedSkill)
         {
             if(StateManager.IsUiUpdateDisabled) return;
+            if(!StateManager.IsInSurveyMode) return;
             
             if(_currentAgent is null)
             {
@@ -98,6 +100,7 @@ namespace SimpleSkills.Scripts.Ui
         private void OnAgentTookAction(ISkAgent activeAgent)
         {
             if(StateManager.IsUiUpdateDisabled) return;
+            if(!StateManager.IsInSurveyMode) return;
             
             //THIS IS VERY MUCH NOT OPTIMAL!
             foreach (SkTileManager tile in _boardManager.Tiles)

@@ -48,8 +48,6 @@ namespace SimpleSkills.Scripts.Ui
             }
             
             _textMessages.Add(chatMessage);
-            Debug.Log($"There are now {_textMessages.Count} in the log.");
-
             this.UpdateChatDisplay();
         }
         
