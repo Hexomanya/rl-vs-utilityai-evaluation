@@ -10,9 +10,9 @@ namespace SimpleSkills.Implementations
     public class SimpleRangedAttack : SimpleSkill
     {
         [SerializeField] private int _damage = 2; 
-        public override int ID { get => (int)SkillIndex.RangedAttack; }
+        public override int ID { get => 123456; }
         
-        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             //TODO: Only allow attack on selcted position
             Vector2Int originPos = context.OriginAgent.Position;
@@ -25,7 +25,7 @@ namespace SimpleSkills.Implementations
                 return Task.FromResult(false);
             }
 
-            if(targetPos == originPos)
+            if(targetPos == originPos && !isMaskingCall)
             {
                 GameLog.Print("Can not target self!");
                 return Task.FromResult(false);
@@ -47,7 +47,7 @@ namespace SimpleSkills.Implementations
             
             bool hasLineOfSight = boardManager.HasLineOfSight(originPos, targetPos.Value);
 
-            if(!hasLineOfSight)
+            if(!hasLineOfSight && !isMaskingCall)
             {
                 GameLog.Print("You don't have line of sight!");
                 return Task.FromResult(false);

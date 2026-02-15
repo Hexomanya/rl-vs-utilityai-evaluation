@@ -8,7 +8,7 @@ namespace SimpleSkills.Implementations
     public class SimpleMoveToSafety : SimpleSkill
     {
         public override int ID { get => -1; }
-        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             SkGameplayManager gameplayManager = context.OriginAgent.GameplayManager;
             

@@ -22,8 +22,11 @@ namespace SimpleSkills
         [SerializeField] private List<UtilityAction> _actions = new List<UtilityAction>();
 
         [Header("Keys")]
-        [SerializeField, Required] private WorldDataKey _actionPointKey;
+        [SerializeField, Required] private WorldDataKey _currentActionPointKey;
+        [SerializeField, Required] private WorldDataKey _maxActionPointKey;
         [SerializeField, Required] private WorldDataKey _enemiesInMeleeKey;
+        [SerializeField, Required] private WorldDataKey _currentHealthKey;
+        [SerializeField, Required] private WorldDataKey _maxHealthKey;
 
         private string _agentName;
         private Vector2Int _position;
@@ -260,9 +263,12 @@ namespace SimpleSkills
             float enemyCount = boardManager.GetTilesInRadiusWithQuery(this.Position, 1, tile => tile.ContainedEntity is ISkAgent).Count;
             
             this.GameplayManager.WorldState.SetData(_enemiesInMeleeKey, enemyCount);
-            this.GameplayManager.WorldState.SetData(_actionPointKey, (float)this.ActionPoints);
             
-            Debug.Log($"Updated enemy count to: " + enemyCount);
+            this.GameplayManager.WorldState.SetData(_currentActionPointKey, (float)this.ActionPoints);
+            this.GameplayManager.WorldState.SetData(_maxActionPointKey, (float)GameConfig.ActionPointMax);
+            
+            this.GameplayManager.WorldState.SetData(_currentHealthKey, (float)this.Health.Value);
+            this.GameplayManager.WorldState.SetData(_maxHealthKey, (float)this.Health.MaxValue);
         }
 
         private void OnDisplayValueChange()

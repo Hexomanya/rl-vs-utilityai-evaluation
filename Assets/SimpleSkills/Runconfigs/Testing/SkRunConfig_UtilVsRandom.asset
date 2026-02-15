@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
+  m_Name: SkRunConfig_UtilVsRandom
+  m_EditorClassIdentifier: 
+  GamesCount: 1
+  RandomizePlayerOrder: 1
+  RoundDelay: 0
+  MaxRounds: 25
+  IsTestRun: 1
+  MaxRetries: 0
+  RoundRewardMultiplier: 0.075
+  MinRewardPercentage: 0.4
+  GamePrefab: {fileID: 6612837081377490231, guid: a3cd88c77190a374cb04c6c247781203, type: 3}
+  TestMapIndex: 1
+  Factions:
+  - Name: Util
+    TeamSetup:
+    - {fileID: 2131085141936695828, guid: e1c355046d44d8d4bb886caef8d969db, type: 3}
+  - Name: Random
+    TeamSetup:
+    - {fileID: 2717598734883091889, guid: 5d0a0d14c7cbef94d9736c12536b2f65, type: 3}
+  AgentNames:
+  - Isabel
+  - Thorsten
+  - Elara
+  - Gareth
+  - Lyanna
+  - Aldric
+  - Seraphina
+  - Kieran
+  - Morgana
+  - Cedric
+  - Aria
+  - Thane
+  - Vivienne
+  - Roderick
+  - Isadora
+  - Magnus
+  - Evangeline
+  - Tristan
+  - Cordelia
+  - Valerian

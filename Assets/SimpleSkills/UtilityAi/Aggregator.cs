@@ -9,16 +9,24 @@ namespace SimpleSkills.UtilityAi
         [SerializeField] private AggregatorFunctions _function;
         [SerializeField] private Consideration _leftInput;
         [SerializeField] private Consideration _rightInput;
+        [SerializeField] private Aggregator _leftInputOverride;
+        [SerializeField] private Aggregator _rightInputOverride;
         
         public float Evaluate(ISkAgent agent,WorldState worldState )
         {
-            float leftValue = _leftInput?.Evaluate(agent, worldState) ?? 0;
-            float rightValue = _rightInput?.Evaluate(agent, worldState) ?? 0;
+            float leftValue = _leftInputOverride?.Evaluate(agent, worldState) 
+                           ?? _leftInput?.Evaluate(agent, worldState) 
+                           ?? 0;
+            
+            float rightValue = _rightInputOverride?.Evaluate(agent, worldState) 
+                            ?? _rightInput?.Evaluate(agent, worldState) 
+                            ?? 0;
             
             float nonClampedValue =  _function switch {
                 AggregatorFunctions.Min => Mathf.Min(leftValue, rightValue),
                 AggregatorFunctions.Max => Mathf.Max(leftValue, rightValue),
                 AggregatorFunctions.Mult => leftValue * rightValue,
+                AggregatorFunctions.Div => leftValue / rightValue,
                 AggregatorFunctions.L_Inverse => 1 - leftValue,
                 AggregatorFunctions.L_Socket => leftValue,
                 AggregatorFunctions.Add => leftValue + rightValue,
@@ -36,6 +44,7 @@ namespace SimpleSkills.UtilityAi
         Min,
         Max,
         Mult,
+        Div,
         L_Inverse,
         L_Socket,
         Add,

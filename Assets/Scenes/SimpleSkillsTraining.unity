@@ -518,18 +518,22 @@ PrefabInstance:
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _runConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 983a19ce11142cb449c93a6f9e41dd22, type: 2}
+      objectReference: {fileID: 11400000, guid: 70a77fc5faca5e4459e5f0e45b56d934, type: 2}
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _maxGamePlayed
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _showGameBoard
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _useSurveyMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
+      propertyPath: _forceGameLogPrint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006439402173475761, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: m_AnchorMax.y

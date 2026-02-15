@@ -50,7 +50,11 @@ MonoBehaviour:
   _actions:
   - {fileID: 11400000, guid: d3242daffe1f93d40a6ec4e5a05551d1, type: 2}
   - {fileID: 11400000, guid: ca2522aa48f11834492bd9187dd837d2, type: 2}
-  - {fileID: 11400000, guid: 048f4b64dfdd004409e21fe3bf4faaca, type: 2}
   - {fileID: 11400000, guid: c5895380b1e4f3148a5eff4315d2afc4, type: 2}
-  _actionPointKey: {fileID: 11400000, guid: cf5e0f59961cfce468cb177b310f8510, type: 2}
+  - {fileID: 11400000, guid: 048f4b64dfdd004409e21fe3bf4faaca, type: 2}
+  - {fileID: 11400000, guid: a95e143d05867084b8975258489f95a2, type: 2}
+  _currentActionPointKey: {fileID: 11400000, guid: cf5e0f59961cfce468cb177b310f8510, type: 2}
+  _maxActionPointKey: {fileID: 11400000, guid: 605b43aa7df1d314dab031df7bf53b39, type: 2}
   _enemiesInMeleeKey: {fileID: 11400000, guid: a162e46fe7425c24084d1802e1c9df2a, type: 2}
+  _currentHealthKey: {fileID: 11400000, guid: ee5bdb6241eb8a24e9536573fa876550, type: 2}
+  _maxHealthKey: {fileID: 11400000, guid: 6b4b0108d1a4b1d41950d123ed897150, type: 2}

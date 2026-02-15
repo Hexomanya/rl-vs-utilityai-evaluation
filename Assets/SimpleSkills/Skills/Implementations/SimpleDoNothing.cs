@@ -8,7 +8,7 @@ namespace SimpleSkills.Implementations
     public class SimpleDoNothing : SimpleSkill
     {
         public override int ID { get => -1; }
-        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             const bool canExecute = true;
             context.IsValidated = canExecute;

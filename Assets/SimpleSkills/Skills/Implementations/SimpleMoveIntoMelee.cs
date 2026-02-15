@@ -12,7 +12,7 @@ namespace SimpleSkills.Implementations
     {
         public override int ID { get => -1; }
         
-        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             SkGameplayManager gameplayManager = context.OriginAgent.GameplayManager;
             

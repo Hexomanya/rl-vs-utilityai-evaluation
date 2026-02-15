@@ -1,5 +1,5 @@
 mlagents-learn.exe .\TrainingSettings\configs\conf_ppo_sk_35.yaml --run-id=sk_35 --env=".\TrainingBuilds\sk_35\Game Master Project" --force
-mlagents-learn.exe .\TrainingSettings\configs\conf_ppo_rr_0x_a.yaml --run-id=rr_o_00_00 --force
+mlagents-learn.exe .\TrainingSettings\configs\conf_ppo_pod_final_01.yaml --run-id=pod_final_01_01 --force
 
 08 - 40
 09 - 41b

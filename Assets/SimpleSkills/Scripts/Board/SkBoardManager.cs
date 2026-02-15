@@ -260,7 +260,17 @@ namespace SimpleSkills
             }
             
             float[,,] actorGrids = new float[channelCount, gridSize, gridSize];
-
+            for (int c = 0; c < channelCount; c++)
+            {
+                for (int x = 0; x < gridSize; x++)
+                {
+                    for (int y = 0; y < gridSize; y++)
+                    {
+                        actorGrids[c, x, y] = -1f;
+                    }
+                }
+            }
+            
             for (int dx = -radius; dx <= radius; dx++)
             {
                 for (int dy = -radius; dy <= radius; dy++)
@@ -270,8 +280,7 @@ namespace SimpleSkills
 
                     if (tile is null)
                     {
-                        //TODO: Handle default setter, when they are not 0
-                        //OUTSIDE OF MAP, SET TO DEFAULT
+                        //OUTSIDE OF MAP, LEAVE AT -1
                         continue;
                     }
                     

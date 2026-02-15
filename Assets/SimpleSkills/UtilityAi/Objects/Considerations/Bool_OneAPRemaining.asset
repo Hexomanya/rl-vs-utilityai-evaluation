@@ -9,39 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f39d456f3e374648b0aa880f6e5953a3, type: 3}
-  m_Name: ActionPointConsideration
-  m_EditorClassIdentifier: 
-  _valueKey: {fileID: 11400000, guid: cf5e0f59961cfce468cb177b310f8510, type: 2}
+  m_Script: {fileID: 11500000, guid: 72c03691c7c54776babc86c8af811d6a, type: 3}
+  m_Name: Bool_OneAPRemaining
+  m_EditorClassIdentifier: SimpleSkills::SimpleSkills.UtilityAi.BasicConsideration
+  _valueKey: {fileID: 0}
   _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -4.314428
-      outSlope: -4.314428
+      inSlope: -3.9840639
+      outSlope: -3.9840639
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.11705457
-      value: 0.49497655
-      inSlope: -3.281326
-      outSlope: -3.281326
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.26062003
-    - serializedVersion: 3
-      time: 0.26
+      time: 0.251
       value: 0
-      inSlope: -0.0042399354
-      outSlope: -0.0042399354
+      inSlope: Infinity
+      outSlope: Infinity
       tangentMode: 0
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
@@ -55,3 +46,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _keyOverrideValue: {fileID: 11400000, guid: 95e92f4bd8d57c34e9f83f70b1501037, type: 2}

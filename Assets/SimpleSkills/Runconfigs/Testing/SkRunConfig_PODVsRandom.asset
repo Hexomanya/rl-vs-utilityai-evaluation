@@ -20,14 +20,15 @@ MonoBehaviour:
   MaxRetries: 0
   RoundRewardMultiplier: 0.075
   MinRewardPercentage: 0.4
-  GamePrefab: {fileID: 1816393480055350439, guid: 782659d8df6bbcc4dbfbcf7f40630031, type: 3}
+  GamePrefab: {fileID: 7548377079320030636, guid: 13e836fa502271d498b5d7519f4c87fd, type: 3}
   TestMapIndex: 1
   Factions:
-  - Name: Evil
-    AgentPrefab: {fileID: 2772456978244489626, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
-  - Name: Good
-    AgentPrefab: {fileID: 6758861965081291365, guid: e2a3bec85a463e049aa1aa840bd102b9, type: 3}
-  AgentsPerFaction: 1
+  - Name: POD
+    TeamSetup:
+    - {fileID: 1234862229445866496, guid: 58c069f9e9cd9974b856cb8e9c3a021f, type: 3}
+  - Name: Random
+    TeamSetup:
+    - {fileID: 2717598734883091889, guid: 5d0a0d14c7cbef94d9736c12536b2f65, type: 3}
   AgentNames:
   - Isabel
   - Thorsten

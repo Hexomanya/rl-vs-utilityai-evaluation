@@ -28,7 +28,7 @@ namespace SimpleSkills
             {
                 foreach (KeyValuePair<string, int> skillUse in recordCategory.Value)
                 {
-                    statsRecorder.Add(recordCategory.Key + "/" + skillUse.Key, skillUse.Value);
+                    statsRecorder.Add(recordCategory.Key + "/" + skillUse.Key, skillUse.Value, StatAggregationMethod.Sum);
                 }
             }
             

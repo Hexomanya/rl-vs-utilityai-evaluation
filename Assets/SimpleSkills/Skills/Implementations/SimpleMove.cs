@@ -9,13 +9,13 @@ namespace SimpleSkills.Implementations
     {
         public override int ID { get => (int)SkillIndex.Move; }
         
-        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             // Masking has no targetPosition, so we just return true
             if(context.TargetPosition is null) return true;
             
             Vector2Int targetPos = context.TargetPosition.Value;
-            if(targetPos == context.OriginAgent.Position) return false;
+            if(targetPos == context.OriginAgent.Position && !isMaskingCall) return false;
             
             SkBoardManager boardManager = context.OriginAgent.GameplayManager.BoardManager;
             SkTileManager tile = boardManager.GetTileAt(targetPos);

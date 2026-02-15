@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MoveIntoMeleeAction
   m_EditorClassIdentifier: 
   _skill: {fileID: 11400000, guid: 1618f1eccc94a4541b85292db148b8a5, type: 2}
-  _finalAggregator: {fileID: 11400000, guid: d57d3c056f49df842a9f80e590d4cc6e, type: 2}
+  _finalAggregator: {fileID: 11400000, guid: fe8a6ec1e4bfd164b93dff160f5a8f49, type: 2}

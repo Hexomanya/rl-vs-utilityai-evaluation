@@ -159,13 +159,19 @@ namespace SimpleSkills
             }
             
             // Skills
-            SkillContext filterContext = new SkillContext(this, this.CurrentTurnId);
+            SkillContext filterContext = new SkillContext(this, this.CurrentTurnId, this.Position);
             
             if(_cancelTokenSource == null) return;
             CancellationToken safeToken = _cancelTokenSource.Token;
             
             for (int i = 0; i < _skills.Count; i++)
             {
+                if(_usesPositionSelection)
+                {
+                    _actionMask[ActionConfig.ActionIndex][i] = true;
+                    continue;
+                }
+                
                 bool enoughActionPoints = _skills[i].ActionPointCost <= this.ActionPoints;
                 bool canUseSkill = enoughActionPoints && await _skills[i].CanExecute(filterContext, safeToken); //TODO: We are doing double work, because we call CanExecute later still
                 _actionMask[ActionConfig.ActionIndex][i] = canUseSkill;
@@ -409,11 +415,19 @@ namespace SimpleSkills
         
         private async void ExecuteAction(SimpleSkill skill, Vector2Int? boardPosition)
         {
+            if(_usesPositionSelection && boardPosition is null)
+            {
+                Debug.LogError("BoardPosition should only be null on agents that don't use position selection!");
+                return;
+            }
+            
             SkillContext context = new SkillContext(this, this.CurrentTurnId, boardPosition);
+            
             //Debug.Log($"Executing skill {skill.Name}");
             
             if(skill.ActionPointCost > this.ActionPoints)
             {
+                
                 //Debug.Log($"Agent selected skill with a too high action point cost: {skill.ActionPointCost} > {_actionsPoints}.");
                 this.RetryGetAction();
                 return;

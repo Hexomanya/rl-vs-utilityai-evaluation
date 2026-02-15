@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67062c8cbea646739e1e508d801f7784, type: 3}
   m_Name: MeleeAttackPassThroughAggregator
   m_EditorClassIdentifier: 
-  _function: 4
+  _function: 5
   _leftInput: {fileID: 11400000, guid: c0e929f3c931aa646b90e230a8b12c44, type: 2}
   _rightInput: {fileID: 0}
+  _leftInputOverride: {fileID: 0}
+  _rightInputOverride: {fileID: 0}

@@ -14,6 +14,7 @@ namespace _General
     {
         public static bool IsUiUpdateDisabled = false;
         public static bool IsInSurveyMode = false;
+        public static bool ForcePrint = false;
         
         [Header("Survey Mode")]
         [SerializeField] private bool _useSurveyMode;
@@ -29,6 +30,7 @@ namespace _General
         [SerializeField] private RunConfig _runConfig;
         [SerializeField] private bool _showGameBoard = true;
         [SerializeField] private int _maxGamePlayed = -1;
+        [SerializeField] private bool _forceGameLogPrint = false;
 
         private readonly ScoreKeeper _scoreKeeper = new ScoreKeeper();
         private readonly List<IGameplayManager> _gameplayManagers = new List<IGameplayManager>();
@@ -36,11 +38,13 @@ namespace _General
         private int _playerGameCount;
         private int _currentSurveyIndex;
         
+
         private void OnEnable()
         {
             Academy.Instance.AutomaticSteppingEnabled = true;
 
             StateManager.IsInSurveyMode = _useSurveyMode;
+            StateManager.ForcePrint = _forceGameLogPrint;
             
             if(!_useSurveyMode) return;
             _commandEvent.Subscribe(this.OnSurveyCommand);

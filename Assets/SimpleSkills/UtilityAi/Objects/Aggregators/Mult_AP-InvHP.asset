@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67062c8cbea646739e1e508d801f7784, type: 3}
+  m_Name: Mult_AP-InvHP
+  m_EditorClassIdentifier: SimpleSkills::SimpleSkills.UtilityAi.Aggregator
+  _function: 2
+  _leftInput: {fileID: 0}
+  _rightInput: {fileID: 0}
+  _leftInputOverride: {fileID: 11400000, guid: 2219191bd76d3d64ba63e49b8aed05da, type: 2}
+  _rightInputOverride: {fileID: 11400000, guid: 95e92f4bd8d57c34e9f83f70b1501037, type: 2}

@@ -13,7 +13,7 @@ namespace SimpleSkills.Implementations
         
         public override int ID { get => (int)SkillIndex.MeleeAttack; }
 
-        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             Vector2Int center = context.OriginAgent.Position;
             SkBoardManager board = context.OriginAgent.GameplayManager.BoardManager;

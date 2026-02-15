@@ -12,7 +12,7 @@ namespace SimpleSkills.Implementations
         [SerializeField] private int _damage = 2; 
         public override int ID { get => (int)SkillIndex.RangedAttack; }
         
-        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             Vector2Int originPos = context.OriginAgent.Position;
             SkBoardManager boardManager = context.OriginAgent.GameplayManager.BoardManager;

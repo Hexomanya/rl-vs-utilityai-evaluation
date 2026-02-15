@@ -11,8 +11,7 @@ namespace SimpleSkills.Scripts
 
         public static void Print(string message, ISkAgent caller = null)
         {
-            if(!StateManager.IsInSurveyMode) return;
-            if(StateManager.IsUiUpdateDisabled) return;
+            if((!StateManager.IsInSurveyMode || StateManager.IsUiUpdateDisabled) && !StateManager.ForcePrint) return;
             
             OnLogMessage?.Invoke(message, caller);
 

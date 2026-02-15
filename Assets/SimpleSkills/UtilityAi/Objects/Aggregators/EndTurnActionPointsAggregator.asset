@@ -15,3 +15,5 @@ MonoBehaviour:
   _function: 2
   _leftInput: {fileID: 11400000, guid: 418f5bc10e3a35949aae8d4e5a96694c, type: 2}
   _rightInput: {fileID: 11400000, guid: a62c260853ef4f14d86fc2a1d6771956, type: 2}
+  _leftInputOverride: {fileID: 0}
+  _rightInputOverride: {fileID: 0}

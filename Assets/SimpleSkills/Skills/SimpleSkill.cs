@@ -18,7 +18,7 @@ namespace SimpleSkills
 
         protected string _currentTurnId;
         
-        public abstract Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken);
+        public abstract Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken, bool isMaskingCall = false);
         public abstract Task<bool> ExecuteSkill(SkillContext context, CancellationToken cancelToken);
         
         protected bool IsEnemyTile(SkTileManager tile, ISkAgent originAgent)

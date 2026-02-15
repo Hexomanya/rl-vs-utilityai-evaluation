@@ -9,7 +9,7 @@ namespace SimpleSkills.Implementations
     public class SimpleEndTurn : SimpleSkill
     {
         public override int ID { get => (int)SkillIndex.EndTurn; }
-        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken)
+        public override Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {
             bool canExecute = context.OriginAgent.ActionPoints <= (GameConfig.ActionPointMax - 1);
            //const bool canExecute = true; // Always true so we don't run into the problem, that we mask everything
