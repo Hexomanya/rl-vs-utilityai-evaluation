@@ -56,7 +56,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent_POD_Base Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 979168573462374536, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

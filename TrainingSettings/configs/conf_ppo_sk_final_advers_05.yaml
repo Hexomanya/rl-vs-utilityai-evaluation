@@ -1,0 +1,49 @@
+behaviors:
+  SK_01:
+    trainer_type: ppo
+    summary_freq: 20000
+    time_horizon: 64
+    max_steps: 750000
+    keep_checkpoints: 5
+    even_checkpoints: false
+    checkpoint_interval: 20000
+    init_path: null    
+    threaded: false
+    
+    hyperparameters:
+      learning_rate: 0.0003
+      batch_size: 100
+      buffer_size: 10240
+      learning_rate_schedule: constant
+      beta: 0.005
+      epsilon: 0.2
+      beta_schedule: constant
+      epsilon_schedule: constant 
+      lambd: 0.95
+      num_epoch: 3
+      
+      shared_critic: false
+      
+    network_settings:
+      hidden_units: 256
+      num_layers: 1
+      normalize: false
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+   
+      memory: null
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        
+    self_play:
+      save_steps: 20000
+      team_change: 100000
+      swap_steps: 10000
+      play_against_latest_model_ratio: 0.5
+      window: 10
+      
+      initial_elo: 1200.0
+    behavioral_cloning: null

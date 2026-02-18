@@ -53,6 +53,7 @@ namespace _General
         private void OnDisable()
         {
             _scoreKeeper.Print();
+            ActionCountKeeper.Print();
             
             if(!_useSurveyMode) return;
             _commandEvent.Unsubscribe(this.OnSurveyCommand);
@@ -190,11 +191,21 @@ namespace _General
         private void HandleMaxGames()
         {
             _playerGameCount++;
-
-            if(_maxGamePlayed < 0 || _playerGameCount < _maxGamePlayed) return;
             
+            if(_maxGamePlayed < 0 || _playerGameCount < _maxGamePlayed) return;
+            Debug.LogWarning("Should end games and report!");
             this.DestroyCurrentDevGames();
+            this.QuitGame();
+        }
+
+        private void QuitGame()
+        {
+#if UNITY_STANDALONE
             Application.Quit();
+#endif
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
         }
 
         private void StartDevMode()

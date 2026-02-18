@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
-  m_Name: SkRunConfig_SK
+  m_Name: SkRunConfig_SKVsSK
   m_EditorClassIdentifier: 
   GamesCount: 25
   RandomizePlayerOrder: 1
   RoundDelay: 0
-  MaxRounds: 25
+  MaxRounds: 15
   IsTestRun: 0
   MaxRetries: 0
   RoundRewardMultiplier: 0.075
   MinRewardPercentage: 0.4
-  GamePrefab: {fileID: 1816393480055350439, guid: cd3ae73485354b3489b56f3a4c20278a, type: 3}
-  TestMapIndex: 2
+  GamePrefab: {fileID: 2504854052093017061, guid: 26765dbcf0742fa4098f316368fd5533, type: 3}
+  TestMapIndex: 1
   Factions:
-  - Name: Evil
-    AgentPrefab: {fileID: 2772456978244489626, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
-  - Name: Good
-    AgentPrefab: {fileID: 2772456978244489626, guid: 4994e81808a349e4788cc9acf949a01a, type: 3}
-  AgentsPerFaction: 1
+  - Name: SK01
+    TeamSetup:
+    - {fileID: 2494013927879602487, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
+  - Name: SK02
+    TeamSetup:
+    - {fileID: 2494013927879602487, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
   AgentNames:
   - Isabel
   - Thorsten

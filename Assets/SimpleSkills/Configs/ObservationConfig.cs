@@ -2,7 +2,7 @@ namespace SimpleSkills
 {
     public static class ObservationConfig
     {
-        public const int ChannelCount = 4;
+        public const int ChannelCount = 3;
         public const int GridSize = 21;
         
         public const int FriendlyChannelIndex = 0;

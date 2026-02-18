@@ -9,7 +9,7 @@ namespace SimpleSkills.Scripts.RewardProvider
         
         public override void OnDidWin() => this.AddReward(_winReward);
         public override void OnDidLoose() => this.AddReward(-_winReward);
-        public override void OnDidDraw() {}
+        public override void OnDidDraw() => this.AddReward(-_winReward);
         public override void OnDidDealDamage(ISkAgent target, int damage) {}
         public override void OnDidReceiveDamage(ISkAgent origin, int damage) {}
         public override void OnDidMove(float distance) {}

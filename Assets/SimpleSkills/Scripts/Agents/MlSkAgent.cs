@@ -15,6 +15,12 @@ using UnityEngine;
 
 namespace SimpleSkills
 {
+    public enum RewardType
+    {
+        Simple,
+        Granular,
+    }
+    
     [RequireComponent(typeof(GridSensorComponent)), RequireComponent(typeof(BehaviorParameters))]
     public class MlSkAgent : Agent, ISkAgent
     {
@@ -28,6 +34,7 @@ namespace SimpleSkills
         [SerializeField] private bool _usesPositionSelection = false;
         [SerializeField] private bool _useTwoPositionBranches = false;
         [SerializeField] private bool _usesRewardShaping = false;
+        [SerializeField] private RewardType _rewardType;
 
         [Header("Events")]
         [SerializeField] private SkAgentEvent _currentAgentChangedEvent;
@@ -114,7 +121,7 @@ namespace SimpleSkills
             this.Health = new Attribute<int>(_maxHealth, _maxHealth);
             
             _manager = manager as SkGameplayManager;
-            _rewardProvider = new GranularRewardProvider(this, _manager);
+            _rewardProvider = _rewardType == RewardType.Granular ? new GranularRewardProvider(this, _manager) : new OnlyWinRewardProvider(this, _manager);
             _gridObservationSensor = _gridSensor.GetObservationVisualSensor; // Is here, because it is still null in awake
             
             _behaviorParameters.TeamId = _factionIndex + 1;
@@ -218,14 +225,18 @@ namespace SimpleSkills
             {
                 int centeredXOffset = x - (ObservationConfig.SkillPositionDiameter - 1) / 2;
                 Vector2Int boardPos = new Vector2Int(_position.x + centeredXOffset, _position.y);
-                actionMask[ActionConfig.PositionSelectionXIndex][x] = _manager.BoardManager.IsInBounds(boardPos);
+                bool xInBounds = _manager.BoardManager.IsInBounds(boardPos);
+                actionMask[ActionConfig.PositionSelectionXIndex][x] = xInBounds;
+                if(!xInBounds) _manager.SkillUseCounter.CountSkillUse("Masking", "Position");
             }
             
             for (int y = 0; y < actionMask[ActionConfig.PositionSelectionYIndex].Length; y++)
             {
                 int centeredYOffset = y - (ObservationConfig.SkillPositionDiameter - 1) / 2;
                 Vector2Int boardPos = new Vector2Int(_position.x, _position.y + centeredYOffset);
-                actionMask[ActionConfig.PositionSelectionYIndex][y] = _manager.BoardManager.IsInBounds(boardPos);
+                bool yInBounds = _manager.BoardManager.IsInBounds(boardPos);
+                actionMask[ActionConfig.PositionSelectionYIndex][y] = yInBounds;
+                if(!yInBounds) _manager.SkillUseCounter.CountSkillUse("Masking", "Position");
             }
         }
 

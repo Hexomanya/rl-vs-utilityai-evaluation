@@ -46,7 +46,7 @@ namespace SimpleSkills.Scripts.Ui
 
         private void Start()
         {
-            if(!StateManager.IsInSurveyMode || StateManager.IsUiUpdateDisabled)
+            if(StateManager.IsUiUpdateDisabled)
             {
                 GameObject.DestroyImmediate(_canvas.gameObject);
                 _isCanvasDestroyed = true;

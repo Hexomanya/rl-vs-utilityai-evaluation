@@ -1,0 +1,41 @@
+behaviors:
+  SK_01:
+    trainer_type: ppo
+    summary_freq: 20000
+    time_horizon: 128 # Higher horizon helps with long-term TRPG planning
+    max_steps: 1000000 # Increased to give self-play more time to stabilize
+    keep_checkpoints: 5
+    checkpoint_interval: 50000
+    
+    hyperparameters:
+      learning_rate: 0.0002 # Slightly lower for more stable self-play
+      batch_size: 512 # Larger batches provide more stable gradients for CNNs
+      buffer_size: 10240
+      learning_rate_schedule: linear
+      beta: 0.01 # Increased to keep exploration alive longer
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: false
+      
+    network_settings:
+      hidden_units: 256
+      num_layers: 2
+      normalize: true # Helps normalize the health/AP inputs with the visual data
+      vis_encode_type: resnet # Better for spatial board awareness
+      memory:
+        sequence_length: 64
+        memory_size: 128
+    
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        
+    self_play:
+      save_steps: 40000
+      team_change: 100000
+      swap_steps: 10000
+      play_against_latest_model_ratio: 0.4 # Focus more on historical versions
+      window: 20 # Remember more past strategies
+      initial_elo: 1200.0

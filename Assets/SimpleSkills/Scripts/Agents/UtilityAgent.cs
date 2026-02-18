@@ -93,7 +93,7 @@ namespace SimpleSkills
        
         public void OnTurnStart()
         {
-            Debug.Log("Starting Utility Agents turn!");
+            //Debug.Log("Starting Utility Agents turn!");
             
             this.CurrentTurnId = Guid.NewGuid().ToString();
             
@@ -115,14 +115,14 @@ namespace SimpleSkills
         {
             this.GameplayManager.RemoveFromGame(this);
             this.GameplayManager.ScoreKeeper.AddScore(ScoreType.Death, this.FactionIndex);
-            Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
+            //Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
             GameLog.Print($"Was killed by {killOriginAgent.GetName()}.", this);
         }
         
         public bool TakeDamage(ISkAgent damageOrigin, int damage)
         {
             this.Health.Set(Mathf.Max(0, this.Health.Value - damage));
-            Debug.Log($"{this.GetName()} received {damage} damage from {damageOrigin.GetName()}.");
+            //Debug.Log($"{this.GetName()} received {damage} damage from {damageOrigin.GetName()}.");
 
             bool willDie = this.Health.Value <= 0;
             if(willDie) this.Die(damageOrigin);
@@ -132,7 +132,7 @@ namespace SimpleSkills
 
         public void DealDamage(ISkAgent damageTarget, int damage)
         {
-            Debug.Log($"Utility Agents deals damage to {damageTarget.GetName()}");
+            //Debug.Log($"Utility Agents deals damage to {damageTarget.GetName()}");
             bool killedTarget = damageTarget.TakeDamage(this, damage);
             if(killedTarget) this.GameplayManager.ScoreKeeper.AddScore(ScoreType.Kill, this.FactionIndex);;
         }
@@ -163,7 +163,7 @@ namespace SimpleSkills
                 return;
             }
 
-            Debug.Log($"Utility: Updated position of {this.GetName()} to {newPosition}");
+            //Debug.Log($"Utility: Updated position of {this.GetName()} to {newPosition}");
             Vector2Int oldPosition = _position;
             _position = newPosition;
             this.GameplayManager.OnPositionUpdate(this, _position, oldPosition);
@@ -171,7 +171,7 @@ namespace SimpleSkills
 
         private void SelectAction()
         {
-            Debug.Log("Utility is selecting Action ---------------------------------");
+            //Debug.Log("Utility is selecting Action ---------------------------------");
             List<UtilityAction> possibleActions = _actions.Where(action => action.Skill.ActionPointCost <= this.ActionPoints).ToList();
             
             if(possibleActions.Count <= 0)
@@ -212,7 +212,7 @@ namespace SimpleSkills
 
         private async void ExecuteAction(SimpleSkill skill, Vector2Int boardPosition)
         {
-            Debug.Log($"Selected skill is: " + skill);
+            //Debug.Log($"Selected skill is: " + skill);
             
             SkillContext context = new SkillContext(this, this.CurrentTurnId, boardPosition);
             
@@ -227,7 +227,8 @@ namespace SimpleSkills
 
             if(!canExecute)
             {
-                Debug.Log("Can not execute skill!");
+                ActionCountKeeper.CountActionUse("utility", "FailedAtCan: " + skill.Name);
+                Debug.LogWarning("Can not execute skill!");
                 this.EndTurn();
                 return ;
             }
@@ -236,11 +237,13 @@ namespace SimpleSkills
             
             if(!didExecute)
             {
-                Debug.Log("Tried and failed to execute skill!");
+                ActionCountKeeper.CountActionUse("utility", "FailedAtExecute: " + skill.Name);
+                Debug.LogWarning("Tried and failed to execute skill!");
                 this.EndTurn();
                 return;
             }
             
+            ActionCountKeeper.CountActionUse("utility", skill.Name);
             GameLog.Print($"Used skill: {skill.Name}.", this);
             _lastUsedSkillChangedEvent.Raise(skill);
             

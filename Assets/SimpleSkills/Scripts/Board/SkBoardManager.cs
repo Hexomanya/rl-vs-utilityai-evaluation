@@ -266,7 +266,7 @@ namespace SimpleSkills
                 {
                     for (int y = 0; y < gridSize; y++)
                     {
-                        actorGrids[c, x, y] = -1f;
+                        actorGrids[c, y, x] = -1f;
                     }
                 }
             }
@@ -290,16 +290,16 @@ namespace SimpleSkills
                     if (tile.ContainedEntity is MlSkAgent agent)
                     {
                         bool isFriendly = agent.FactionIndex == factionIndex;
-                        actorGrids[ObservationConfig.FriendlyChannelIndex, xIndex, yIndex] = isFriendly ? 1f : 0f;
-                        actorGrids[ObservationConfig.EnemyChannelIndex, xIndex, yIndex] = !isFriendly ? 1f : 0f; 
+                        actorGrids[ObservationConfig.FriendlyChannelIndex, yIndex, xIndex] = isFriendly ? 1f : 0f;
+                        actorGrids[ObservationConfig.EnemyChannelIndex, yIndex, xIndex] = !isFriendly ? 1f : 0f; 
                     }
                     
-                    actorGrids[ObservationConfig.ObstacleChannelIndex, xIndex, yIndex] = tile.ContainedEntity is Wall ? 1f : 0f;
+                    actorGrids[ObservationConfig.ObstacleChannelIndex, yIndex, xIndex] = tile.ContainedEntity is Wall ? 1f : 0f;
 
-                    if(tile.ContainedEntity is Resource resource)
-                    {
-                        actorGrids[ObservationConfig.ResourceChannelIndex, xIndex, yIndex] = resource.ContainedElement.MapIndex;
-                    }
+                    // if(tile.ContainedEntity is Resource resource)
+                    // {
+                    //     actorGrids[ObservationConfig.ResourceChannelIndex, yIndex, xIndex] = resource.ContainedElement.MapIndex;
+                    // }
                 }
             }
 
@@ -542,6 +542,9 @@ namespace SimpleSkills
             if(pathResult.ResultPath.Count < 2)
             {
                 Debug.LogWarning("Path was smaller then two, agent is already at position!");
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPaused = true;
+#endif
                 return movedAgent.Position;
             }
 
