@@ -14,3 +14,10 @@ Die folgende Tabelle enthält die Zuordnung der in der Arbeit evaluierten Reinfo
 
 ## Anmerkung zu den Trainingsergebnissen
 Die rohen Trainingsergebnisse sowie die vollständigen TensorBoard-Logs sind aufgrund ihres erheblichen Datenvolumens von circa 109 GB nicht in diesem Repository inkludiert. Diese Daten können bei berechtigtem Interesse separat angefragt werden.
+
+## Lizenz
+Dieses Projekt ist unter der MIT-Lizenz lizenziert – siehe die [LICENSE](LICENSE) Datei für Details.
+
+## Kontakt
+Benjamin Schön: bs-192047@rwu.de
+Anfragen zum Projekt oder zu den detaillierten Trainingsdaten (109 GB) können über die angegebene E-Mail-Adresse gestellt werden.
