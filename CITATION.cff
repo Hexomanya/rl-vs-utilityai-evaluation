@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Schön"
+  given-names: "Benjamin"
+title: "Unity-RL-vs-UtilityAI-Combat"
+version: 1.0.0
+date-released: 2026-02-24
+url: "https://github.com/Hexomanya/rl-vs-utilityai-evaluation"
