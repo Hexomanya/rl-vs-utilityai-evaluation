@@ -20,4 +20,5 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert – siehe die [LICENSE](LICEN
 
 ## Kontakt
 Benjamin Schön: bs-192047@rwu.de
+
 Anfragen zum Projekt oder zu den detaillierten Trainingsdaten (109 GB) können über die angegebene E-Mail-Adresse gestellt werden.
