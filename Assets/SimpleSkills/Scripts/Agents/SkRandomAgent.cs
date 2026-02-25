@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using _General;
 using SimpleSkills.Scripts;
 using SimpleSkills.Scripts.RewardProvider;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 namespace SimpleSkills
@@ -33,6 +35,9 @@ namespace SimpleSkills
         
         // Async
         private CancellationTokenSource _cancelTokenSource;
+        
+        //Debug
+        private readonly Stopwatch _stopwatch = new Stopwatch();
 
         // Properties
         public string ID { get => _id; }
@@ -101,7 +106,7 @@ namespace SimpleSkills
         public void OnTurnStart()
         {
             //Debug.Log($"Start of {_id}s turn! ---------------------------");
-
+            
             this.CurrentTurnId = Guid.NewGuid().ToString();
             this.ActionPoints = Mathf.Min(this.ActionPoints + GameConfig.ActionPointTurnRecover, GameConfig.ActionPointMax);
             _endTurnAfter = false;
@@ -145,6 +150,9 @@ namespace SimpleSkills
         
         public void ChooseSkill()
         {
+            _stopwatch.Reset();
+            _stopwatch.Start();
+            
             SimpleSkill skill = _skills[Random.Range(0, _skills.Count)];
             int width = this.GameplayManager.BoardManager.Width;
             int height = this.GameplayManager.BoardManager.Height;
@@ -161,6 +169,7 @@ namespace SimpleSkills
             
             if(skill.ActionPointCost > this.ActionPoints)
             {
+                _stopwatch.Stop();
                 //Debug.Log($"Agent selected skill with a too high action point cost: {skill.ActionPointCost} > {_actionsPoints}.");
                 this.RetryGetAction();
                 return;
@@ -170,6 +179,7 @@ namespace SimpleSkills
 
             if(!canExecute)
             {
+                _stopwatch.Stop();
                 //Debug.LogWarning($"The skill {skill.Name} should have been masked!");
                 this.RetryGetAction();
                 return;
@@ -179,6 +189,7 @@ namespace SimpleSkills
             
             if(!didExecute)
             {
+                _stopwatch.Stop();
                 Debug.LogWarning($"The skill {skill.Name} did not execute and should have been masked!");
                 this.RetryGetAction();
                 return;
@@ -191,6 +202,9 @@ namespace SimpleSkills
             
             GameLog.Print($"Used skill: {skill.Name}.", this);
             _lastUsedSkillChangedEvent.Raise(skill);
+            
+            _stopwatch.Stop();
+            ExecutionTimeKeeper.AddActionTime("RandomAgent", skill.Name, _stopwatch.ElapsedMilliseconds);
             
             this.ActionPoints -= skill.ActionPointCost;
             bool didEndGame = _manager.OnActionTook(this, -1);
@@ -212,11 +226,11 @@ namespace SimpleSkills
 
         private void SetPosition(Vector2Int newPosition)
         {
-            if(_position == newPosition)
-            {
-                //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
-                return;
-            }
+            // if(_position == newPosition)
+            // {
+            //     Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
+            //     return;
+            // }
 
             //Debug.Log($"Updated position of {this.GetName()} to {newPosition}");
             Vector2Int oldPosition = _position;

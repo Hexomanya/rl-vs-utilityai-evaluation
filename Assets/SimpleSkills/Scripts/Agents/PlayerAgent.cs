@@ -74,6 +74,20 @@ namespace SimpleSkills
             this.Reset();
         }
         public string GetName() => _agentName;
+        
+        public void CancelTasks()
+        {
+            if(_cancelTokenSource == null) return;
+            try {
+                if (!_cancelTokenSource.IsCancellationRequested) _cancelTokenSource.Cancel();
+            }
+            catch (ObjectDisposedException) { }
+            finally
+            {
+                _cancelTokenSource.Dispose();
+                _cancelTokenSource = null;
+            }
+        }
        
         public void OnTurnStart()
         {
@@ -146,11 +160,11 @@ namespace SimpleSkills
         
         private void SetPosition(Vector2Int newPosition)
         {
-            if(_position == newPosition)
-            {
-                //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
-                return;
-            }
+            // if(_position == newPosition)
+            // {
+            //     //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
+            //     return;
+            // }
 
             Debug.Log($"Updated position of {this.GetName()} to {newPosition}");
             Vector2Int oldPosition = _position;

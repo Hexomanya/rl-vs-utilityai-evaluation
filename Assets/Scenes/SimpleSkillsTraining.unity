@@ -518,10 +518,10 @@ PrefabInstance:
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _runConfig
       value: 
-      objectReference: {fileID: 11400000, guid: b77d844129434b4438edf90f06db365b, type: 2}
+      objectReference: {fileID: 11400000, guid: 70a77fc5faca5e4459e5f0e45b56d934, type: 2}
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _maxGamePlayed
-      value: 100
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4745525602553923927, guid: 4a998c7127346eb4282a384604fc3f44, type: 3}
       propertyPath: _showGameBoard

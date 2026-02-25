@@ -1,0 +1,27 @@
+Random vs Random: 2306 won vs 2347 won.
+Agent RandomAgent has used the action Simple Stupid Ranged Attack 17347 times. Overall: 2ms, Average: 0,0001152937ms
+Agent RandomAgent has used the action Move into melee 26190 times. Overall: 746983ms, Average: 28,52169ms
+Agent RandomAgent has used the action Move to safety 18969 times. Overall: 782395ms, Average: 41,24598ms
+Agent RandomAgent has used the action End Turn 13567 times. Overall: 0ms, Average: 0ms
+Agent RandomAgent has used the action Simple Melee Attack 9568 times. Overall: 4ms, Average: 0,0004180602ms
+
+Util vs Random: 4846 won vs 154 won
+Agent UtilityAgent has used the action Simple Melee Attack 13882 times. Overall: 9ms, Average: 0,0006483216ms
+Agent UtilityAgent has used the action Move into melee 20074 times. Overall: 629135ms, Average: 31,34079ms
+Agent UtilityAgent has used the action End Turn 1863 times. Overall: 0ms, Average: 0ms
+Agent UtilityAgent has used the action Move to safety 5752 times. Overall: 301909ms, Average: 52,48766ms
+Agent UtilityAgent has used the action Simple Stupid Ranged Attack 1125 times. Overall: 0ms, Average: 0ms
+
+SkAuto vs Random: 4937 won vs 63 won
+Agent MlSkAgent has used the action Simple Stupid Ranged Attack 9774 times. Overall: 843939ms, Average: 86,34531ms
+Agent MlSkAgent has used the action Move into melee 11231 times. Overall: 1356079ms, Average: 120,7443ms
+Agent MlSkAgent has used the action Simple Melee Attack 8803 times. Overall: 600056ms, Average: 68,16495ms
+Agent MlSkAgent has used the action End Turn 12604 times. Overall: 1013929ms, Average: 80,44501ms
+Agent MlSkAgent has used the action Move to safety 1044 times. Overall: 123844ms, Average: 118,6245ms
+
+SkAdvers vs Random: 4827 won vs 156 won
+Agent MlSkAgent has used the action Simple Stupid Ranged Attack 11427 times. Overall: 648738ms, Average: 56,77238ms
+Agent MlSkAgent has used the action Move into melee 19297 times. Overall: 1587008ms, Average: 82,24118ms
+Agent MlSkAgent has used the action Move to safety 16236 times. Overall: 1522850ms, Average: 93,79465ms
+Agent MlSkAgent has used the action End Turn 18070 times. Overall: 904628ms, Average: 50,06242ms
+Agent MlSkAgent has used the action Simple Melee Attack 7398 times. Overall: 386283ms, Average: 52,21452ms

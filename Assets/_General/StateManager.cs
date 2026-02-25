@@ -54,6 +54,7 @@ namespace _General
         {
             _scoreKeeper.Print();
             ActionCountKeeper.Print();
+            ExecutionTimeKeeper.Print();
             
             if(!_useSurveyMode) return;
             _commandEvent.Unsubscribe(this.OnSurveyCommand);

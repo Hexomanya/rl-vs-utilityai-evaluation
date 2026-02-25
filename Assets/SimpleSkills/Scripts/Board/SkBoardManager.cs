@@ -542,9 +542,9 @@ namespace SimpleSkills
             if(pathResult.ResultPath.Count < 2)
             {
                 Debug.LogWarning("Path was smaller then two, agent is already at position!");
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPaused = true;
-#endif
+// #if UNITY_EDITOR
+//                 UnityEditor.EditorApplication.isPaused = true;
+// #endif
                 return movedAgent.Position;
             }
 
@@ -711,6 +711,7 @@ namespace SimpleSkills
                 List<Vector2Int> sortedSafePosition = positionIndices.Value
                     .Select(safetyMap.IndexToBoardPosition)
                     .OrderBy(boardPosition => this.TileToWorldDistance(originAgent.Position, boardPosition)).ToList();
+                    //.OrderByDescending(boardPosition => this.TileToWorldDistance(originAgent.Position, boardPosition)).ToList();
                 
                 foreach (Vector2Int safePosition in sortedSafePosition)
                 {
@@ -719,8 +720,10 @@ namespace SimpleSkills
                     if(safePosition == originAgent.Position) return safePosition;
                     if(!this.IsTileFree(this.GetTileAt(safePosition))) continue;
                     
+                    //if(this.TileToWorldDistance(safePosition, originAgent.Position) > originAgent.MovementRange) continue;
+                    
                     PathfindingRequest request = new PathfindingRequest(originAgent.Position, safePosition, false, this);
-                    await this.GetPath(request, cancelToken); //TODO: Do in parallel if performance is low
+                    await this.GetPath(request, cancelToken); //TODO: Do in parallel if performance is low, Currently not a problem on 1 vs 1 because if it is in range it can almost certainly be reached
                     
                     if(!request.IsDone) Debug.LogWarning("Request was not done!");
                     if(!request.Result.DidFindPath || request.Result.PathLength > originAgent.MovementRange) continue;

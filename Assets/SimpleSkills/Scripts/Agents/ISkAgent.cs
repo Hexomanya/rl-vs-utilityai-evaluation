@@ -15,6 +15,8 @@ namespace SimpleSkills
         public Attribute<int> Health { get; }
         public IReadOnlyList<SimpleSkill> Skills { get; }
         public float MovementRange { get; }
+
+        public void CancelTasks();
         
         public void DealDamage(ISkAgent targetAgent, int damage);
         public bool TakeDamage(ISkAgent mlSkAgent, int damage);

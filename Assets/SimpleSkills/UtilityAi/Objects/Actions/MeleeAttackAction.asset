@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MeleeAttackAction
   m_EditorClassIdentifier: 
   _skill: {fileID: 11400000, guid: b283e43d3c110cc4ca093003a9851061, type: 2}
-  _finalAggregator: {fileID: 11400000, guid: 3dbe06f112abc8742a50f8c9e08aef48, type: 2}
+  _finalAggregator: {fileID: 11400000, guid: 362d8934a16f04e4a818886b74ab3d1e, type: 2}

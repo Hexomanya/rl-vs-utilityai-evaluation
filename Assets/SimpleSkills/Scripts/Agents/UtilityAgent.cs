@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using _General;
@@ -8,6 +9,7 @@ using SimpleSkills.Scripts;
 using SimpleSkills.Scripts.RewardProvider;
 using SimpleSkills.UtilityAi;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace SimpleSkills
 {
@@ -33,6 +35,9 @@ namespace SimpleSkills
         private int _actionPoints;
 
         private CancellationTokenSource _cancelTokenSource;
+        
+        //Debug
+        private Stopwatch _stopwatch = new Stopwatch();
         
         public string ID { get; private set; }
         public Color TileColor { get => this.GetTileColor(); }
@@ -157,11 +162,11 @@ namespace SimpleSkills
         
         private void SetPosition(Vector2Int newPosition)
         {
-            if(_position == newPosition)
-            {
-                //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
-                return;
-            }
+            // if(_position == newPosition)
+            // {
+            //     Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
+            //     return;
+            // }
 
             //Debug.Log($"Utility: Updated position of {this.GetName()} to {newPosition}");
             Vector2Int oldPosition = _position;
@@ -171,6 +176,9 @@ namespace SimpleSkills
 
         private void SelectAction()
         {
+            _stopwatch.Reset();
+            _stopwatch.Start();
+            
             //Debug.Log("Utility is selecting Action ---------------------------------");
             List<UtilityAction> possibleActions = _actions.Where(action => action.Skill.ActionPointCost <= this.ActionPoints).ToList();
             
@@ -218,6 +226,7 @@ namespace SimpleSkills
             
             if(skill.ActionPointCost > this.ActionPoints) 
             {
+                _stopwatch.Stop();
                 Debug.LogWarning($"UtilityAgent tried to use an action, which required to many ap!");
                 this.EndTurn();
                 return;
@@ -227,6 +236,7 @@ namespace SimpleSkills
 
             if(!canExecute)
             {
+                _stopwatch.Stop();
                 ActionCountKeeper.CountActionUse("utility", "FailedAtCan: " + skill.Name);
                 Debug.LogWarning("Can not execute skill!");
                 this.EndTurn();
@@ -237,6 +247,7 @@ namespace SimpleSkills
             
             if(!didExecute)
             {
+                _stopwatch.Stop();
                 ActionCountKeeper.CountActionUse("utility", "FailedAtExecute: " + skill.Name);
                 Debug.LogWarning("Tried and failed to execute skill!");
                 this.EndTurn();
@@ -246,6 +257,9 @@ namespace SimpleSkills
             ActionCountKeeper.CountActionUse("utility", skill.Name);
             GameLog.Print($"Used skill: {skill.Name}.", this);
             _lastUsedSkillChangedEvent.Raise(skill);
+            
+            _stopwatch.Stop();
+            ExecutionTimeKeeper.AddActionTime("UtilityAgent", skill.Name, _stopwatch.ElapsedMilliseconds);
             
             this.ActionPoints -= skill.ActionPointCost;
             bool didEndGame = this.GameplayManager.OnActionTook(this, -1);

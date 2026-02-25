@@ -217,13 +217,8 @@ namespace SimpleSkills
                 Debug.LogError($"Tried to remove agent with name {agent.GetName()} from Initiative, that was not in it. Initiative is: \n {agentNames}");
                 return;
             }
-
-            /*bool didClear = */_boardManager.ClearTile(mlSkAgent.Position);
-
-            /*if(!didClear)
-            {
-                Debug.LogError("Tile at agent position did not contain agent!");
-            }*/
+            
+            _boardManager.ClearTile(mlSkAgent.Position);
             
             if(mlSkAgent.ID == this.CurrentAgent.ID)
             {
@@ -383,8 +378,13 @@ namespace SimpleSkills
         //TODO: We are currently not handling the case where we have draw, because everyone is dead
         private int CheckWinner()
         {
+           
             List<int> aliveFactions = _initiative.Select(agent => agent.FactionIndex).ToList();
-            if(aliveFactions.Count > 1) return -1;
+
+            if(aliveFactions.Count > 1)
+            {
+                return -1;
+            }
 
             return aliveFactions[0];
         }
@@ -393,6 +393,11 @@ namespace SimpleSkills
         {
             _initiative.Clear();
             _deadAgents.Clear();
+
+            foreach (ISkAgent agent in _initiative)
+            {
+                agent.CancelTasks();
+            }
 
             _initiative = new List<ISkAgent>(_allAgents.Values);
             _initiative.Shuffle();
@@ -421,7 +426,7 @@ namespace SimpleSkills
             {
                 if (agent.Position.Equals(originPosition))
                 {
-                    Debug.LogWarning("Possible agent is on origin position! This should be impossible!");
+                    Debug.LogError("Possible agent is on origin position! This should be impossible!");
                     continue;
                 }
                 

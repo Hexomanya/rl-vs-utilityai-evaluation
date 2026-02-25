@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Simple Stupid Ranged Attack
   Description: It is a really simple ranged attack
   ActionPointCost: 2
-  RequiresPosition: 1
+  RequiresPosition: 0
   Range: 6
+  Icon: {fileID: 0}
   _damage: 2

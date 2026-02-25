@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
+  m_Name: SkRunConfig_SKAutoVsSkAdvers
+  m_EditorClassIdentifier: 
+  GamesCount: 25
+  RandomizePlayerOrder: 1
+  RoundDelay: 0
+  MaxRounds: 25
+  IsTestRun: 0
+  MaxRetries: 0
+  RoundRewardMultiplier: 0.075
+  MinRewardPercentage: 0.4
+  GamePrefab: {fileID: 6440005196671658820, guid: 15269d583115f04449d8e1f191426d55, type: 3}
+  TestMapIndex: 1
+  Factions:
+  - Name: SkAuto
+    TeamSetup:
+    - {fileID: 2494013927879602487, guid: db10cb8f7ff6411478a76bb91519ba5d, type: 3}
+  - Name: SkAdvers
+    TeamSetup:
+    - {fileID: 2494013927879602487, guid: 6fd586fd71075dc4d92e3cb43136a0d9, type: 3}
+  AgentNames:
+  - Isabel
+  - Thorsten
+  - Elara
+  - Gareth
+  - Lyanna
+  - Aldric
+  - Seraphina
+  - Kieran
+  - Morgana
+  - Cedric
+  - Aria
+  - Thane
+  - Vivienne
+  - Roderick
+  - Isadora
+  - Magnus
+  - Evangeline
+  - Tristan
+  - Cordelia
+  - Valerian

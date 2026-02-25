@@ -48,13 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 979168573462374536, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+      propertyPath: _sensorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260733398913359656, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2260733398913359656, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
       propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260733398913359656, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+      propertyPath: m_InferenceDevice
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2772456978244489626, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
       propertyPath: m_Name
       value: Agent_POD_Base Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329051266263077913, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}
+      propertyPath: _rewardType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 979168573462374536, guid: 745fade970a0fd04ea262d18d96076f3, type: 3}

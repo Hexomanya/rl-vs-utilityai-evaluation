@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
   m_Name: SkRunConfig_UtilVsRandom
   m_EditorClassIdentifier: 
-  GamesCount: 1
+  GamesCount: 25
   RandomizePlayerOrder: 1
   RoundDelay: 0
   MaxRounds: 25
-  IsTestRun: 1
+  IsTestRun: 0
   MaxRetries: 0
   RoundRewardMultiplier: 0.075
   MinRewardPercentage: 0.4

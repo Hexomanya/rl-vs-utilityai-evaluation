@@ -7,7 +7,7 @@ namespace SimpleSkills.Implementations
     [CreateAssetMenu(fileName = "SimpleMove", menuName = "SimpleSkills/SimpleMove")]
     public class SimpleMove : SimpleSkill
     {
-        public override int ID { get => (int)SkillIndex.Move; }
+        public override int ID { get => 789; }
         
         public override async Task<bool> CanExecute(SkillContext context, CancellationToken cancelToken,  bool isMaskingCall = false)
         {

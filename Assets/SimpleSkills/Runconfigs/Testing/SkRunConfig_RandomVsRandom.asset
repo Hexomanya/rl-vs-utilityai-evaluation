@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138a8c1593af46659f353d1ff4c89dc1, type: 3}
   m_Name: SkRunConfig_RandomVsRandom
   m_EditorClassIdentifier: 
-  GamesCount: 1
+  GamesCount: 25
   RandomizePlayerOrder: 1
   RoundDelay: 0
-  MaxRounds: 40
+  MaxRounds: 25
   IsTestRun: 0
   MaxRetries: 0
   RoundRewardMultiplier: 0.075
   MinRewardPercentage: 0.4
-  GamePrefab: {fileID: 1816393480055350439, guid: f9db503a1e4c12c48a7ca5a86094edcb, type: 3}
+  GamePrefab: {fileID: 288120167833883842, guid: 0a3085bc2fbb9d94ebd29223e27c0dfd, type: 3}
   TestMapIndex: 1
   Factions:
-  - Name: Evil
+  - Name: Random01
     TeamSetup:
     - {fileID: 2717598734883091889, guid: 5d0a0d14c7cbef94d9736c12536b2f65, type: 3}
-  - Name: Good
+  - Name: Random02
     TeamSetup:
     - {fileID: 2717598734883091889, guid: 5d0a0d14c7cbef94d9736c12536b2f65, type: 3}
   AgentNames:

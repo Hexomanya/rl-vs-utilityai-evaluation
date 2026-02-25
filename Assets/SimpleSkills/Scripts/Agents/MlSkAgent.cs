@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using _General;
@@ -12,6 +13,7 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace SimpleSkills
 {
@@ -61,6 +63,9 @@ namespace SimpleSkills
         // Async
         private CancellationTokenSource _cancelTokenSource;
         private SimpleSkill _lastUsedSkill;
+        
+        //Debug
+        private Stopwatch _stopwatch = new Stopwatch();
 
         // Properties
         public string ID { get => _id; }
@@ -140,7 +145,7 @@ namespace SimpleSkills
         public void OnTurnStart()
         {
             //Debug.Log($"Start of {_id}s turn! ---------------------------");
-
+            
             this.CurrentTurnId = Guid.NewGuid().ToString();
             
             this.ActionPoints = Mathf.Min(this.ActionPoints + GameConfig.ActionPointTurnRecover, GameConfig.ActionPointMax);
@@ -173,7 +178,7 @@ namespace SimpleSkills
             
             for (int i = 0; i < _skills.Count; i++)
             {
-                if(_usesPositionSelection)
+                if(_skills[i].RequiresPosition)
                 {
                     _actionMask[ActionConfig.ActionIndex][i] = true;
                     continue;
@@ -190,7 +195,7 @@ namespace SimpleSkills
                 if(!isMasked) break;
                 if(i != 0) continue;
 
-                Debug.LogWarning("Would have masked everything!");
+                //Debug.LogWarning("Would have masked everything!");
                 _actionMask[ActionConfig.ActionIndex][i] = true;
             }
             
@@ -227,7 +232,7 @@ namespace SimpleSkills
                 Vector2Int boardPos = new Vector2Int(_position.x + centeredXOffset, _position.y);
                 bool xInBounds = _manager.BoardManager.IsInBounds(boardPos);
                 actionMask[ActionConfig.PositionSelectionXIndex][x] = xInBounds;
-                if(!xInBounds) _manager.SkillUseCounter.CountSkillUse("Masking", "Position");
+                //if(!xInBounds) maskCountX++;
             }
             
             for (int y = 0; y < actionMask[ActionConfig.PositionSelectionYIndex].Length; y++)
@@ -236,7 +241,7 @@ namespace SimpleSkills
                 Vector2Int boardPos = new Vector2Int(_position.x, _position.y + centeredYOffset);
                 bool yInBounds = _manager.BoardManager.IsInBounds(boardPos);
                 actionMask[ActionConfig.PositionSelectionYIndex][y] = yInBounds;
-                if(!yInBounds) _manager.SkillUseCounter.CountSkillUse("Masking", "Position");
+                //if(!yInBounds) maskCountY++;
             }
         }
 
@@ -256,6 +261,9 @@ namespace SimpleSkills
 
         public async void RequestSkillAction()
         {
+            _stopwatch.Reset();
+            _stopwatch.Start();
+            
             float[,,] actorGrids = _manager.BoardManager.ComposeActorGrids(_position, _factionIndex);
             _gridObservationSensor.SetGrids(actorGrids);
 
@@ -290,7 +298,7 @@ namespace SimpleSkills
                     throw new ArgumentOutOfRangeException(nameof(result), result, null);
             }
             
-            Debug.Log("Ending Episode");
+            //Debug.Log("Ending Episode");
             EndEpisode();
         }
 
@@ -298,7 +306,7 @@ namespace SimpleSkills
         {
             _manager.RemoveFromGame(this);
             _manager.ScoreKeeper.AddScore(ScoreType.Death, this.FactionIndex);
-            Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
+            //Debug.Log($"{this.GetName()} was killed by {killOriginAgent.GetName()}");
             GameLog.Print($"Was killed by {killOriginAgent.GetName()}.", this);
             _rewardProvider.OnDidDie();
         }
@@ -438,7 +446,7 @@ namespace SimpleSkills
             
             if(skill.ActionPointCost > this.ActionPoints)
             {
-                
+                _stopwatch.Stop();
                 //Debug.Log($"Agent selected skill with a too high action point cost: {skill.ActionPointCost} > {_actionsPoints}.");
                 this.RetryGetAction();
                 return;
@@ -448,6 +456,7 @@ namespace SimpleSkills
 
             if(!canExecute)
             {
+                _stopwatch.Stop();
                 //Debug.LogWarning($"The skill {skill.Name} should have been masked!");
                 this.RetryGetAction();
                 return;
@@ -457,6 +466,7 @@ namespace SimpleSkills
             
             if(!didExecute)
             {
+                _stopwatch.Stop();
                 Debug.LogWarning($"The skill {skill.Name} did not execute and should have been masked!");
                 _manager.SkillUseCounter.CountSkillUse("SkillFailed", skill.Name);
                 this.RetryGetAction();
@@ -471,6 +481,9 @@ namespace SimpleSkills
             _manager.SkillUseCounter.CountSkillUse("SkillUse", skill.Name);
             _lastUsedSkillChangedEvent.Raise(skill);
             GameLog.Print($"Used skill: {skill.Name}.", this);
+            
+            _stopwatch.Stop();
+            ExecutionTimeKeeper.AddActionTime("MlSkAgent", skill.Name, _stopwatch.ElapsedMilliseconds);
             
             this.ActionPoints -= skill.ActionPointCost;
             bool didEndGame = _manager.OnActionTook(this, -1);
@@ -502,11 +515,11 @@ namespace SimpleSkills
 
         private void SetPosition(Vector2Int newPosition)
         {
-            if(_position == newPosition)
-            {
-                //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
-                return;
-            }
+            // if(_position == newPosition)
+            // {
+            //     //Debug.LogWarning($"Tried to set the position of agent ${this.GetName()} to his current position. This should be prohibited!");
+            //     return;
+            // }
 
             //Debug.Log($"Updated position of {this.GetName()} to {newPosition}");
             Vector2Int oldPosition = _position;
