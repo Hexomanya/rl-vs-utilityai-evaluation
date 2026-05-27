@@ -1,24 +1,31 @@
-# Evaluierung von Reinforcement Learning gegenüber Utility AI für die Entwicklung von KI-Agenten in rundenbasierten Kampfsystemen
+# Evaluation of Reinforcement Learning versus Utility AI for the Development of AI Agents in Turn-Based Combat Systems
 
-## Zusammenfassung
-Diese Arbeit untersucht, ob Reinforcement Learning (RL) für kleine Indie-Entwicklerteams eine praktikable Alternative zu Utility AI (UAI) bei der Entwicklung von KI-Agenten in rundenbasierten Kampfsystemen darstellt. Dazu werden drei RL-Varianten sowie ein UAI-Agent in einem eigens entwickelten Prototyp implementiert und anhand von Kampfverhalten, Laufzeitverhalten und Entwicklungskomplexität verglichen. Die Ergebnisse zeigen, dass RL-Agenten zwar höhere Gewinnraten erzielen, UAI jedoch ohne den erheblichen Trainingsaufwand qualitativ gleichwertige Ergebnisse liefert und daher für kleine Indie-Teams empfohlen wird. Darüber hinaus zeigen die Ergebnisse ein Potenzial für den Einsatz von RL als automatisiertes Playtesting-Werkzeug zur frühzeitigen Aufdeckung von Schwachstellen im Game Design.
+Language: English | [Deutsch](README.de.md)  
+[Read the full Bachelor's Thesis (German)](Thesis/bachelorArbeit_v01.pdf)
 
-## Agenten-Mapping
-Die folgende Tabelle enthält die Zuordnung der in der Arbeit evaluierten Reinforcement-Learning-Agenten zu den entsprechenden Assets und Konfigurationsdateien innerhalb des Unity-Projekts:
+---
 
-| Agent Name | Asset Name | Konfigurationsdatei |
+## Abstract
+This thesis investigates whether Reinforcement Learning (RL) represents a viable alternative to Utility AI (UAI) for small indie developer teams when developing AI agents in turn-based combat systems. To this end, three RL variants and one UAI agent were implemented in a custom-developed prototype and compared based on combat behavior, runtime behavior, and development complexity. 
+
+The results show that while RL agents achieve higher win rates, UAI delivers qualitatively equivalent results without the significant training overhead and is therefore recommended for small indie teams. Furthermore, the results indicate a high potential for using RL as an automated playtesting tool to uncover vulnerabilities in game design at an early stage.
+
+## Agent Mapping
+The following table maps the Reinforcement Learning agents evaluated in the thesis to their corresponding assets and configuration files within the Unity project:
+
+| Agent Name | Asset Name | Configuration File |
 | :--- | :--- | :--- |
 | **PSA** (Position Selector Agent) | `pod_final_auto_06_01` | `conf_ppo_pod_final_06.yaml` |
 | **GA-R** (Guided Agent - Random) | `sk_final_auto_01_01` | `conf_ppo_sk_final_auto_01.yaml` |
 | **GA-S** (Guided Agent - Self-Play) | `sk_final_advers_01_02` | `conf_ppo_sk_final_advers_01.yaml` |
 
-## Anmerkung zu den Trainingsergebnissen
-Die rohen Trainingsergebnisse sowie die vollständigen TensorBoard-Logs sind aufgrund ihres erheblichen Datenvolumens von circa 109 GB nicht in diesem Repository inkludiert. Diese Daten können bei berechtigtem Interesse separat angefragt werden.
+## Note on Training Results
+The raw training results as well as the complete TensorBoard logs are not included in this repository due to their significant data volume of approximately 109 GB. This data can be requested separately upon justified interest.
 
-## Lizenz
-Dieses Projekt ist unter der MIT-Lizenz lizenziert – siehe die [LICENSE](LICENSE) Datei für Details.
+## License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
-## Kontakt
+## Contact
 Benjamin Schön: bs-192047@rwu.de
 
-Anfragen zum Projekt oder zu den detaillierten Trainingsdaten (109 GB) können über die angegebene E-Mail-Adresse gestellt werden.
+Inquiries regarding the project or the detailed training data (109 GB) can be made via the provided email address.
